@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  championships: 1
+  year_established: 1
+  logo_url--no-test-framework: MyString
+
+two:
+  name: MyString
+  championships: 1
+  year_established: 1
+  logo_url--no-test-framework: MyString

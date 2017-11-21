@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import TeamCard from '../components/TeamCard'
+import TeamForm from './TeamForm';
+import { getTeams } from '../actions/teams'
 import './Teams.css'
 
-const Teams = (props) => (
-  <div className= "TeamsContainer">
-    <h3> NBA Teams </h3>
-    {props.teams.map(team =>
-    <div className="TeamCard">
-      <h3>{team.name}</h3>
-      <p>Championships: {team.championships}</p>
-      <img  className="TeamImage" src={team.logo_url} alt={team.name}/>
-      <p>Year Established: {team.year_established}</p>
-    </div>
-    )}
-  </div>
-)
+class Teams extends Component {
 
-export default Teams;
+  componentDidMount() {
+    this.props.getTeams()
+  }
+  render() {
+    return (
+    <div className= "TeamsContainer">
+      <h1>Teams</h1>
+      {this.props.teams.map(team => <TeamCard key={team.id} team=
+        {team} />)}
+        <TeamForm />
+   </div>
+ );
+  }
+}
+const mapStateToProps = (state) => {
+  return ({
+    teams: state.teams
+  })
+}
+
+export default connect(mapStateToProps, { getTeams })(Teams);

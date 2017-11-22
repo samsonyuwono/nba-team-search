@@ -10,7 +10,7 @@ class TeamForm extends Component {
     const currentTeamFormData = Object.assign({}, this.props.teamFormData, {
       [name]: value
     })
-    this.props.updateTeamFormData({currentTeamFormData})
+    this.props.updateTeamFormData(currentTeamFormData)
   }
 
   handleOnSubmit = event => {
@@ -19,7 +19,8 @@ class TeamForm extends Component {
   }
 
   render() {
-      const {name, year_established, logo_url, championships} = this.props.teamFormData;
+  const {name, championships, year_established, logo_url} = this.props.teamFormData;
+
     return (
       <div>
       Add a team to the list
@@ -33,6 +34,7 @@ class TeamForm extends Component {
         value={name}
         />
         </div>
+
         <div>
         <label htmlFor="championships">Championships:</label>
         <input
@@ -42,15 +44,7 @@ class TeamForm extends Component {
         value={championships}
         />
         </div>
-        <div>
-        <label htmlFor="logo_url">Logo URL:</label>
-        <input
-        type= "text"
-        onChange={this.handleOnChange}
-        name="logo_url"
-        value={logo_url}
-        />
-        </div>
+
         <div>
         <label htmlFor="year_established">Year Established:</label>
         <input
@@ -58,6 +52,16 @@ class TeamForm extends Component {
         onChange={this.handleOnChange}
         name="year_established"
         value={year_established}
+        />
+        </div>
+
+        <div>
+        <label htmlFor="logo_url">Logo Url :</label>
+        <input
+        type= "text"
+        onChange={this.handleOnChange}
+        name="logo_url"
+        value={logo_url}
         />
         </div>
 

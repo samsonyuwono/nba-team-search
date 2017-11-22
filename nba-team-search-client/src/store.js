@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import teams from './reducers/teams';
 import teamFormData from './reducers/teamFormData';
 
+
 const reducers = combineReducers({
   teams,
   teamFormData

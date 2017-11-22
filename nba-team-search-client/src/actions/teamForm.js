@@ -5,3 +5,9 @@ export const updateTeamFormData = teamFormData => {
     teamFormData
   }
 }
+
+export const resetTeamForm = () => {
+  return {
+    type: 'RESET_TEAM_FORM'
+  }
+}

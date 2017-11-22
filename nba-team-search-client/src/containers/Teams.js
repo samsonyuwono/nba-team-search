@@ -12,6 +12,7 @@ class Teams extends Component {
     this.props.getTeams()
   }
   render() {
+    console.log(this.props.teams)
     return (
     <div className= "TeamsContainer">
       <h1>Teams</h1>

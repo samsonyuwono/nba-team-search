@@ -1,4 +1,7 @@
+import { resetTeamForm } from './teamForm';
+ 
 const API_URL = process.env.REACT_APP_API_URL;
+
 //**Action creators **
 const setTeams = teams => {
   return {
@@ -6,6 +9,14 @@ const setTeams = teams => {
     teams
   }
 }
+
+const addTeam = team => {
+  return {
+    type: 'CREATE_TEAM_SUCCESS',
+    team
+  }
+}
+
 // ** Async Actions **
 export const getTeams = () => {
   return dispatch => {
@@ -17,19 +28,19 @@ export const getTeams = () => {
 }
 
 export const createTeam = team => {
-  debugger;
   return dispatch => {
     return fetch(`${API_URL}/teams`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      data: JSON.stringify(team)
+      body: JSON.stringify({ team: team })
     })
     .then(response=> response.json())
     .then(team => {
-        debugger
-      })
+      dispatch(addTeam(team))
+      dispatch(resetTeamForm())
+    })
     .catch(error => console.log(error))
   }
 }

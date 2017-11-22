@@ -3,6 +3,9 @@ export default (state = [], action) => {
     case 'GET_TEAMS_SUCCESS':
       return action.teams;
 
+    case 'CREATE_TEAM_SUCCESS':
+      return state.concat(action.team)
+
     default:
       return state;
   }

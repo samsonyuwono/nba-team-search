@@ -8,6 +8,6 @@ export const updateTeamFormData = teamFormData => {
 
 export const resetTeamForm = () => {
   return {
-    type: 'RESET_TEAM_FORM'
+    type: 'RESET_SURFBOARD_FORM'
   }
 }

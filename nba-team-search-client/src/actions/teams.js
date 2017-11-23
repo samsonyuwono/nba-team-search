@@ -1,8 +1,8 @@
 import { resetTeamForm } from './teamForm';
- 
+
 const API_URL = process.env.REACT_APP_API_URL;
 
-//**Action creators **
+// ** Action Creators **
 const setTeams = teams => {
   return {
     type: 'GET_TEAMS_SUCCESS',
@@ -36,11 +36,11 @@ export const createTeam = team => {
       },
       body: JSON.stringify({ team: team })
     })
-    .then(response=> response.json())
-    .then(team => {
-      dispatch(addTeam(team))
-      dispatch(resetTeamForm())
-    })
-    .catch(error => console.log(error))
+      .then(response => response.json())
+      .then(team => {
+        dispatch(addTeam(team))
+        dispatch(resetTeamForm())
+      })
+      .catch(error => console.log(error))
   }
 }

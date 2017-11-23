@@ -1,17 +1,18 @@
 const initialState = {
-   name: '',
-   championships: 0,
-   logo_url: '',
-   year_established: 0
+  name: '',
+  championships: 0,
+  year_established: 0, 
+  logo_url: ''
 }
-export default (state= initialState, action) => {
+
+export default (state = initialState, action) => {
 
   switch(action.type) {
     case 'UPDATED_DATA':
-      return action.teamFormData
+      return action.teamFormData;
 
     case 'RESET_TEAM_FORM':
-      return state;
+      return initialState;
 
     default:
       return state;

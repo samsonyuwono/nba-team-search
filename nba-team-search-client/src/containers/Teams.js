@@ -20,7 +20,7 @@ class Teams extends Component {
         {team} />)}
         <TeamForm />
    </div>
- );
+    );
   }
 }
 const mapStateToProps = (state) => {

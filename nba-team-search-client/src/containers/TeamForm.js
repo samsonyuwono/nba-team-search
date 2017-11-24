@@ -20,7 +20,7 @@ class TeamForm extends Component {
   }
 
   render() {
-    const { name, championships, year_established, logo_url } = this.props.teamFormData;
+    const { name, wins, losses, logo_url } = this.props.teamFormData;
 
     return (
       <div>
@@ -36,21 +36,21 @@ class TeamForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="championships">Championships:</label>
+            <label htmlFor="wins">Wins:</label>
             <input
               type="number"
               onChange={this.handleOnChange}
-              name="championships"
-              value={championships}
+              name="wins"
+              value={wins}
             />
           </div>
           <div>
-            <label htmlFor="year_established">Year Established:</label>
+            <label htmlFor="losses">Losses:</label>
             <input
               type="number"
               onChange={this.handleOnChange}
-              name="year_established"
-              value={year_established}
+              name="losses"
+              value={losses}
             />
           </div>
           <div>

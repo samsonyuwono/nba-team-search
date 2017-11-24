@@ -2,12 +2,12 @@
 
 one:
   name: MyString
-  championships: 1
-  year_established: 1
+  wins: 1
+  Losses: 1
   logo_url--no-test-framework: MyString
 
 two:
   name: MyString
-  championships: 1
-  year_established: 1
+  wins: 1
+  Losses: 1
   logo_url--no-test-framework: MyString

@@ -8,7 +8,7 @@ import {
 import Teams from './Teams'
 import Home from '../components/Home'
 import Navbar from '../components/Navbar'
-
+import SignupPage from './SignupPage'
 import './App.css'
 
 class App extends Component {
@@ -27,7 +27,8 @@ class App extends Component {
             	<div className="main-content">
 							<Route exact path='/' component={Home}/>
 							<Route exact path='/teams' component={Teams}/>
-						</div>
+              <Route exact path='/signup' component={SignupPage}/>
+						    </div>
             </div>
         </Switch>
       </Router>

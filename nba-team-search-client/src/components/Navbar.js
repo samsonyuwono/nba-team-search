@@ -21,20 +21,23 @@ const Navbar = () =>
     activeStyle={{
       background: '#D1D0CE'
     }}>Home</NavLink>
+
     <NavLink
-    to='/Teams'
+    to='/teams'
     exact
     style={link}
     activeStyle={{
       background: '#D1D0CE'
     }}>Teams</NavLink>
+
     <NavLink
-    to='/schedule'
+    to='/signup'
     exact
     style={link}
     activeStyle={{
       background: '#D1D0CE'
-    }}>Schedule</NavLink>
+    }}>Signup</NavLink>
+
     <NavLink
     to='/standings'
     exact

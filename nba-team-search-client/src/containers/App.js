@@ -17,11 +17,17 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-            <div className="App">
-              <Navbar />
-              
-              <Home />
-              <Teams />
+          <div>
+						<div className="main-header">
+							<div className="inner">
+								<Navbar/>
+								<h1 className="main-title">The Rec League Portal</h1>
+							</div>
+						</div>
+            	<div className="main-content">
+							<Route exact path='/' component={Home}/>
+							<Route exact path='/teams' component={Teams}/>
+						</div>
             </div>
         </Switch>
       </Router>

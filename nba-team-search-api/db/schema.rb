@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20171128181135) do
     t.integer "height"
     t.integer "weight"
     t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teams", force: :cascade do |t|

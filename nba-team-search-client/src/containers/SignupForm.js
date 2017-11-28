@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -18,13 +19,13 @@ class SignupForm extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    console.log(this.state);
+    this.props.userSignupRequest(this.state)
   }
   render() {
     return (
       <form onSubmit={this.handleOnSubmit}>
       <div className="form-group">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">Username:</label>
         <input
           type="text"
           onChange={this.handleOnChange}
@@ -34,8 +35,8 @@ class SignupForm extends React.Component {
           />
       </div>
 
-      <div className="form-group">
-        <label htmlFor="email">Email</label>
+      <div className="email">
+        <label htmlFor="email">Email:</label>
           <input
             type="text"
             onChange={this.handleOnChange}
@@ -45,20 +46,20 @@ class SignupForm extends React.Component {
             />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
+        <div className="password">
+          <label htmlFor="password">Password:</label>
             <input
             type="text"
               onChange={this.handleOnChange}
               name="password"
-              className="form-control"
+              className="password"
               value={this.state.password}
             />
         </div>
 
 
-        <div className="form-group">
-          <label htmlFor="password">Password Confirmation</label>
+        <div className="password-confrimation">
+          <label htmlFor="passwordConfirmation">Password Confirmation:</label>
             <input
               type="text"
               onChange={this.handleOnChange}
@@ -80,4 +81,7 @@ class SignupForm extends React.Component {
   }
 }
 
+SignupForm.propTypes = {
+  userSignupRequest: PropTypes.func.isRequired
+}
 export default SignupForm;

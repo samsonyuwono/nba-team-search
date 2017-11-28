@@ -12,7 +12,6 @@ import SignupPage from './SignupPage'
 import './App.css'
 
 class App extends Component {
-      //{insert nav bar above everything}
   render() {
     return (
       <Router>

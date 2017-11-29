@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import TeamsCard from '../../components/teams/TeamsCard';
-import TeamForm from '../../components/teams/TeamForm';
+import TeamsCard from '../../components/teams/TeamCard';
+import TeamForm from '../components/TeamForm';
 import TeamShow from '../../components/teams/TeamShow';
 
 

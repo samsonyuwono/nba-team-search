@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import TeamCard from '../components/TeamCard';
-import TeamForm from './TeamForm';
+import TeamForm from '../components/TeamForm';
 import { getTeams } from '../actions/teams'
 import './Teams.css'
 
@@ -13,14 +13,11 @@ class Teams extends Component {
     this.props.getTeams()
   }
   render() {
-    console.log(this.props.teams)
     return (
     <div className= "TeamsContainer">
       <h1>Teams</h1>
       {this.props.teams.map(team => <TeamCard key={team.id} team=
         {team} />)}
-        <div className="TeamShow">
-        </div>
         <TeamForm />
    </div>
     );

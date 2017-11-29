@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-	Switch
-} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-import Teams from './Teams'
 import Home from '../components/Home'
+import Teams from './Teams'
+import Players from './Players'
 import Navbar from '../components/Navbar'
-import SignupPage from './SignupPage'
+
 import './App.css'
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Switch>
           <div>
 						<div className="main-header">
 							<div className="inner">
@@ -24,12 +20,11 @@ class App extends Component {
 							</div>
 						</div>
             	<div className="main-content">
-							<Route exact path='/' component={Home}/>
+              <Route exact path='/' component={Home}/>
 							<Route exact path='/teams' component={Teams}/>
-              <Route exact path='/signup' component={SignupPage}/>
+              <Route exact path='/about' component={Players}/>
 						    </div>
             </div>
-        </Switch>
       </Router>
     )
   }

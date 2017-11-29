@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import TeamCard from '../components/TeamCard'
+import TeamCard from '../components/TeamCard';
 import TeamForm from './TeamForm';
 import { getTeams } from '../actions/teams'
 import './Teams.css'
+
 
 class Teams extends Component {
 
@@ -18,6 +19,8 @@ class Teams extends Component {
       <h1>Teams</h1>
       {this.props.teams.map(team => <TeamCard key={team.id} team=
         {team} />)}
+        <div className="TeamShow">
+        </div>
         <TeamForm />
    </div>
     );

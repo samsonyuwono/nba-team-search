@@ -31,20 +31,29 @@ const Navbar = () =>
     }}>Teams</NavLink>
 
     <NavLink
+      to='/players'
+      exact
+      style={link}
+      activeStyle={{
+      background: '#D1D0CE'
+    }}>Players</NavLink>
+
+    <NavLink
+      to='/new'
+      exact
+      style={link}
+      activeStyle={{
+      background: '#D1D0CE'
+    }}>Add a team</NavLink>
+
+    <NavLink
     to='/signup'
     exact
     style={link}
     activeStyle={{
       background: '#D1D0CE'
     }}>Signup</NavLink>
-
-    <NavLink
-    to='/standings'
-    exact
-    style={link}
-    activeStyle={{
-    background: '#D1D0CE'
-  }}>Standings</NavLink>
   </div>
+
 
 export default Navbar

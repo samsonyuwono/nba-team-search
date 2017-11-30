@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
-
-import TeamCard from '../../components/teams/TeamCard';
+import TeamsList from '../../components/teams/TeamsList';
 import TeamForm from '../../components/teams/TeamForm';
 import TeamShow from '../../components/teams/TeamShow';
 
@@ -14,7 +13,7 @@ class TeamsPage extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path={`${match.url}`} component={(props) => <TeamCard {...props} teams={teams} />}  />
+          <Route exact path={`${match.url}`} component={(props) => <TeamsList {...props} teams={teams} />}  />
           <Route exact path={`${match.url}/new`} component={TeamForm} />
           <Route exact path={`${match.url}/:teamId`} component={TeamShow} />
         </Switch>

@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import TeamCard from './TeamCard';
 import TeamForm from './TeamForm';
 import { getTeams } from '../../actions/teams'
-import './Teams.css'
+import '../../assets/Teams.css'
 
 
-class TeamList extends Component {
+class TeamsList extends Component {
 
   componentDidMount() {
     this.props.getTeams()
@@ -29,4 +29,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, { getTeams })(TeamList);
+export default connect(mapStateToProps, { getTeams })(TeamsList);

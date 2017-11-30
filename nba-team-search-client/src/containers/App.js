@@ -4,12 +4,11 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from '../components/Home'
 
 import TeamsPage from './teams/TeamsPage';
-import TeamsList from '../components/teams/TeamsList';
 import PlayersList from '../components/players/PlayersList';
 import TeamForm from '../components/teams/TeamForm'
 import Navbar from '../components/Navbar'
 
-import './App.css'
+import './../assets/App.css'
 
 class App extends Component {
   render() {
@@ -24,7 +23,7 @@ class App extends Component {
 						</div>
             	<div className="main-content">
                 <Route exact path='/' component={Home}/>
-							  <Route exact path='/teams' component={TeamsList}/>
+							  <Route exact path='/teams' component={TeamsPage}/>
                 <Route exact path='/players' component={PlayersList}/>
                 <Route exact path='/new' component={TeamForm}/>
 						   </div>

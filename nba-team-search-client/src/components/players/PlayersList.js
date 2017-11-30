@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-class PlayersList  {
+import PlayerCard from './PlayerCard';
+
+import { getPlayers } from '../../actions/players'
+import '../../assets/Players.css'
+
+class PlayersList extends Component {
+
+  componentDidMount() {
+    this.props.getPlayers()
+  }
   render() {
     return (
-      <div className= "PlayersContainer">
+    <div className= "PlayersContainer">
       <h1>Players</h1>
-      </div>
-    )
+      {this.props.players.map(player => <PlayerCard key={player.id} player=
+        {player} />)}
+   </div>
+    );
   }
 }
+const mapStateToProps = (state) => {
+  return ({
+    players: state.players
+  })
+}
 
-export default PlayersList;
+export default connect(mapStateToProps, { getPlayers })(PlayersList);

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import TeamCard from '../components/TeamCard';
-import TeamForm from '../components/TeamForm';
-import { getTeams } from '../actions/teams'
+import TeamCard from './TeamCard';
+import TeamForm from './TeamForm';
+import { getTeams } from '../../actions/teams'
 import './Teams.css'
 
 
-class Teams extends Component {
+class TeamList extends Component {
 
   componentDidMount() {
     this.props.getTeams()
@@ -29,4 +29,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, { getTeams })(Teams);
+export default connect(mapStateToProps, { getTeams })(TeamList);

@@ -1,11 +1,11 @@
 import React from 'react';
-import TeamCard from './TeamCard'
+
 
 const TeamShow = ({team, players}) => {
   return (
     <div>
-        <TeamCard team={team} players={players}/>
-      </div>
+      <h1>This is a show page</h1>
+    </div>
   )
 }
 

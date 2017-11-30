@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Home from '../components/Home'
-import TeamList from './TeamList'
-import Players from './Players'
-import TeamForm from '../components/TeamForm'
+
+import TeamsPage from './teams/TeamsPage';
+import TeamsList from '../components/teams/TeamsList';
+import PlayersList from '../components/players/PlayersList';
+import TeamForm from '../components/teams/TeamForm'
 import Navbar from '../components/Navbar'
 
 import './App.css'
@@ -22,8 +24,8 @@ class App extends Component {
 						</div>
             	<div className="main-content">
                 <Route exact path='/' component={Home}/>
-							  <Route exact path='/teams' component={TeamList}/>
-                <Route exact path='/players' component={Players}/>
+							  <Route exact path='/teams' component={TeamsList}/>
+                <Route exact path='/players' component={PlayersList}/>
                 <Route exact path='/new' component={TeamForm}/>
 						   </div>
             </div>

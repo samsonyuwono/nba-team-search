@@ -9,10 +9,11 @@ const TeamCard = ({ team }) => (
     <p>Wins: {team.wins}</p>
     <p>Losses: {team.losses} </p>
     <img className="TeamImage" src={team.logo_url} alt={team.name} />
-    <Link style={{ marginBottom: '5px'}} to={`/teams/${team.id}`}>Click here</Link>
-
+    <div>
+      <Link style={{ marginBottom: '5px'}} to={`/teams/${team.id}`}>Click here</Link>
+    </div>
   </div>
 )
-  //{link to players page here}
+
 
 export default TeamCard;

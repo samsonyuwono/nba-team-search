@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+
 const link = {
   width: '100px',
   padding: '12px',
@@ -11,6 +12,7 @@ const link = {
   borderBottomLeftRadius: '10px',
   borderBottomRightRadius: '10px',
 }
+
 
 const Navbar = () =>
   <div className='navbar'>
@@ -31,15 +33,7 @@ const Navbar = () =>
     }}>Teams</NavLink>
 
     <NavLink
-      to='/players'
-      exact
-      style={link}
-      activeStyle={{
-      background: '#D1D0CE'
-    }}>Players</NavLink>
-
-    <NavLink
-      to='/new'
+      to='/teams/new'
       exact
       style={link}
       activeStyle={{
@@ -47,13 +41,22 @@ const Navbar = () =>
     }}>Add a team</NavLink>
 
     <NavLink
-    to='/signup'
+      to='/players'
+      exact
+      style={link}
+      activeStyle={{
+      background: '#D1D0CE'
+    }}>Players</NavLink>
+
+
+    <NavLink
+    to='/players/new'
     exact
     style={link}
     activeStyle={{
       background: '#D1D0CE'
-    }}>Signup</NavLink>
+    }}>Add a player</NavLink>
   </div>
 
 
-export default Navbar
+export default Navbar;

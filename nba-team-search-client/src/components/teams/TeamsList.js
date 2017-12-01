@@ -18,7 +18,7 @@ class TeamsList extends Component {
       <h1>Teams</h1>
       {this.props.teams.map(team => <TeamCard key={team.id} team=
         {team} />)}
-        <TeamForm />
+
    </div>
     );
   }

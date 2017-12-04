@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import TeamCard from './TeamCard';
-import TeamForm from './TeamForm';
+import TeamCard from '../../components/teams/TeamCard';
 import { getTeams } from '../../actions/teams'
 import '../../assets/Teams.css'
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import PlayerCard from './PlayerCard';
+import PlayerCard from '../../components/players/PlayerCard';
 
 import { getPlayers } from '../../actions/players'
 import '../../assets/Players.css'

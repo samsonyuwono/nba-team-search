@@ -14,12 +14,12 @@ const addPlayer = player => {
   }
 }
 
-export const getPlayers = () => {
+export const fetchPlayers = () => {
   return dispatch => {
-    return fetch(`${API_URL}/players`)
-    .then(response => response.json())
-    .then(players=> dispatch(setPlayers(players)))
-    .catch(error => console.log(error))
+    return fetch(`${API_URL}`)
+      .then(response => response.json())
+      .then(players => dispatch(setPlayers(players)))
+      .catch(error => console.log(error));
   }
 }
 //put debugger in getPlayers

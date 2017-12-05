@@ -4,11 +4,13 @@ import thunk from 'redux-thunk';
 import teams from './reducers/teams';
 import players from './reducers/players';
 import teamFormData from './reducers/teamFormData';
+import playerFormData from './reducers/playerFormData';
 
 const reducers = combineReducers({
   teams,
   teamFormData,
-  players
+  players,
+  playerFormData
 });
 const middleware = [thunk];
 

@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import PlayerCard from '../../components/players/PlayerCard';
-
-import { getPlayers } from '../../actions/players'
+import { fetchPlayers } from '../../actions/players'
 import '../../assets/Players.css'
 
 class PlayersList extends Component {
 
   componentDidMount() {
-    this.props.getPlayers()
+    this.props.fetchPlayers()
   }
   render() {
     return (
     <div className= "PlayersContainer">
       <h1>Players</h1>
-      {this.props.players.map(player => <PlayerCard key={player.id} player=
-        {player} />)}
+      <PlayerCard />
    </div>
     );
   }
@@ -27,4 +25,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, { getPlayers })(PlayersList);
+export default connect(mapStateToProps, { fetchPlayers })(PlayersList);

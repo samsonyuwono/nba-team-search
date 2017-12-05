@@ -62,6 +62,15 @@ class PlayerForm extends Component {
               value={image_url}
             />
           </div>
+            <div>
+              <label htmlFor="team_id">Team number:</label>
+              <input
+                type="text"
+                onChange={this.handleOnChange}
+                name="team_id"
+          
+              />
+            </div>
 
           <button type="submit">Add Player</button>
         </form>

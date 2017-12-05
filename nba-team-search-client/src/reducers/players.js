@@ -1,10 +1,9 @@
-export default (state =[], action) => {
-  switch(action.type) {
-
-    case 'GET_PLAYERS_SUCCESS':
-     return {loading: false, players: action.payload.players}
+export default (state = [], action) => {
+  switch (action.type) {
+    case 'FETCH_PLAYERS':
+      return action.players
 
     default:
-      return state;
+      return state
+    }
   }
-}

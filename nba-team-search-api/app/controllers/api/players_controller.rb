@@ -27,7 +27,7 @@ class Api::PlayersController < ApplicationController
 
   private
 
-  def fighter_params
+  def player_params
     params.require(:player).permit(:name, :height, :weight, :image_url, :team_id)
   end
 end

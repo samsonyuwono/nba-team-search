@@ -1,8 +1,7 @@
-Using data basketball-reference.com, I will create a NBA team search app using react-redux.
-The purpose of this app is to quickly look up current and historical data of NBA teams.
-
-In addition, I will use RESTFUL routes to allow the creation of defunct NBA/ABA teams.
+1. Get team show to show all of a team's players
+2. Get Players index page to show
+3. Redirect add team to Teams index
 
 Stretch
-- Search by team performance of a specific year
-- Sift through team-player data
+1. Standings
+2. Schedule

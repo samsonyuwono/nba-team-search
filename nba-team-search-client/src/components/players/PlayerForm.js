@@ -24,7 +24,7 @@ class PlayerForm extends Component {
 
     return (
       <div>
-        Add A Player To The Inventory
+        Add a Player to a team
         <form onSubmit={this.handleOnSubmit}>
           <div>
             <label htmlFor="name">Name:</label>
@@ -68,7 +68,6 @@ class PlayerForm extends Component {
                 type="text"
                 onChange={this.handleOnChange}
                 name="team_id"
-          
               />
             </div>
 

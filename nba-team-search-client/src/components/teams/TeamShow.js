@@ -1,4 +1,5 @@
 import React from 'react';
+import PlayerForm from '../players/PlayerForm';
 
 
 
@@ -19,6 +20,7 @@ const TeamShow = (props) => {
     <div className="TeamShow">
       <h1>This is a show page</h1>
         {getTeam()}
+        <PlayerForm/>
     </div>
   )
 }

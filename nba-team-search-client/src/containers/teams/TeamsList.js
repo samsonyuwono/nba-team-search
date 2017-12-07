@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import TeamCard from '../../components/teams/TeamCard';
+import TeamForm from '../../components/teams/TeamForm';
 import { getTeams } from '../../actions/teams'
 import '../../assets/Teams.css'
 
@@ -17,7 +18,7 @@ class TeamsList extends Component {
       <h1>Teams</h1>
       {this.props.teams.map(team => <TeamCard key={team.id} team=
         {team} />)}
-
+        <TeamForm />
    </div>
     );
   }

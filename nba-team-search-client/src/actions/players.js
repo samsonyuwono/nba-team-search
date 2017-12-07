@@ -1,3 +1,5 @@
+import { resetPlayerForm } from './playerForm';
+
 const API_URL = process.env.REACT_APP_API_URL;
 
 const setPlayers = players => {
@@ -16,7 +18,7 @@ const addPlayer = player => {
 
 export const fetchPlayers = () => {
   return dispatch => {
-    return fetch(`${API_URL}`)
+    return fetch(`${API_URL}/players`)
       .then(response => response.json())
       .then(players => dispatch(setPlayers(players)))
       .catch(error => console.log(error));
@@ -35,6 +37,7 @@ export const createPlayer = player => {
       .then(response => response.json())
       .then(player => {
         dispatch(addPlayer(player))
+        dispatch(resetPlayerForm())
       })
       .catch(error => console.log(error))
   }

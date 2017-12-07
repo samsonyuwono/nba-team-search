@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import PlayerCard from '../../components/players/PlayerCard';
+import PlayerForm from '../../components/players/PlayerForm';
 import { fetchPlayers } from '../../actions/players'
 import '../../assets/Players.css'
 
@@ -14,7 +15,9 @@ class PlayersList extends Component {
     return (
     <div className= "PlayersContainer">
       <h1>Players</h1>
-      <PlayerCard />
+      {this.props.players.map(player => <PlayerCard key={player.id} player=
+        {player} />)}
+      <PlayerForm />
    </div>
     );
   }

@@ -5,9 +5,10 @@ import Home from '../components/Home'
 
 import TeamsList from './teams/TeamsList';
 import TeamShow from '../components/teams/TeamShow';
-import PlayersList from './players/PlayersList';
 import TeamForm from '../components/teams/TeamForm'
+import PlayersList from './players/PlayersList';
 import PlayerForm from '../components/players/PlayerForm'
+import PlayerShow from '../components/players/PlayerShow';
 import Navbar from '../components/Navbar'
 
 import './../assets/App.css'
@@ -27,10 +28,11 @@ class App extends Component {
             	<div className="main-content">
                 <Route exact path='/' component={Home}/>
 							  <Route exact path='/teams' component={TeamsList}/>
-                <Route path='/teams/:id' component={TeamShow}/>
+                <Route exact path='/teams/:id' component={TeamShow}/>
                 <Route exact path='/teams/new' component={TeamForm}/>
                 <Route exact path='/players' component={PlayersList}/>
                 <Route exact path='/players/new' component={PlayerForm}/>
+
 						   </div>
             </div>
           </Switch>

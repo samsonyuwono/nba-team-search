@@ -24,7 +24,7 @@ class TeamForm extends Component {
 
     return (
       <div>
-        Add A Team To The Inventory
+        Add a team to the League
         <form onSubmit={this.handleOnSubmit}>
           <div>
             <label htmlFor="name">Name:</label>

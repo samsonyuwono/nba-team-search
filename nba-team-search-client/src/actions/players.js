@@ -18,7 +18,7 @@ const addPlayer = player => {
 
 export const fetchPlayers = () => {
   return dispatch => {
-    return fetch(`${API_URL}/players`)
+    return fetch('/players')
       .then(response => response.json())
       .then(players => dispatch(setPlayers(players)))
       .catch(error => console.log(error));

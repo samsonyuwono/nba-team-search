@@ -23,8 +23,8 @@ class PlayerForm extends Component {
     const { name, height, weight, image_url } = this.props.playerFormData;
 
     return (
-      <div>
-        Add a Player to a team
+      <div className="playerForm">
+        <h1>Add a player to a team</h1>
         <form onSubmit={this.handleOnSubmit}>
           <div>
             <label htmlFor="name">Name:</label>

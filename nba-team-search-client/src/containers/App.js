@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 
 import Home from '../components/Home'
 
@@ -17,25 +17,18 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Switch>
-          <div>
-						<div className="main-header">
-							<div className="inner">
-								<Navbar/>
-								<h1 className="main-title">The Rec League Portal</h1>
-							</div>
-						</div>
-            	<div className="main-content">
-                <Route exact path='/' component={Home}/>
-							  <Route exact path='/teams' component={TeamsList}/>
-                <Route exact path='/teams/:id' component={TeamShow}/>
-                <Route exact path='/teams/new' component={TeamForm}/>
-                <Route exact path='/players' component={PlayersList}/>
-                <Route exact path='/players/new' component={PlayerForm}/>
+        <div className="App">
+					<Navbar />
+            <Switch>
+              <Route exact path='/' component={Home}/>
+              <Route exact path='/teams/new' component={TeamForm}/>
+              <Route exact path='/teams/:teamid' component={TeamShow}/>
+							 <Route exact path='/teams' component={TeamsList}/>
+               <Route exact path='/players' component={PlayersList}/>
+              <Route exact path='/players/new' component={PlayerForm}/>
 
-						   </div>
+            </Switch>
             </div>
-          </Switch>
       </Router >
     )
   }

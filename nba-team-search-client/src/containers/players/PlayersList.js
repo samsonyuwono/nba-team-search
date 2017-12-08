@@ -17,7 +17,7 @@ class PlayersList extends Component {
       <h1>Players</h1>
       {this.props.players.map(player => <PlayerCard key={player.id} player=
         {player} />)}
-      <PlayerForm />
+        <PlayerForm />
    </div>
     );
   }

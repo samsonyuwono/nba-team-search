@@ -4,7 +4,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const setPlayers = players => {
   return {
-    type: 'GET_PLAYERS_SUCCESS',
+    type: 'FETCH_PLAYERS',
     players
   }
 }
@@ -18,7 +18,7 @@ const addPlayer = player => {
 
 export const fetchPlayers = () => {
   return dispatch => {
-    return fetch('/players')
+    return fetch(`${API_URL}/players`)
       .then(response => response.json())
       .then(players => dispatch(setPlayers(players)))
       .catch(error => console.log(error));

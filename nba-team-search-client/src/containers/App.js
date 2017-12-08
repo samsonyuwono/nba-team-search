@@ -9,6 +9,7 @@ import TeamForm from '../components/teams/TeamForm'
 import PlayersList from './players/PlayersList';
 import PlayerForm from '../components/players/PlayerForm'
 import PlayerShow from '../components/players/PlayerShow';
+import PlayerEditForm from '../components/players/PlayerEditForm';
 import Navbar from '../components/Navbar'
 
 import './../assets/App.css'
@@ -27,7 +28,7 @@ class App extends Component {
                <Route exact path='/players' component={PlayersList}/>
               <Route exact path='/players/new' component={PlayerForm}/>
               <Route exact path='/players/:id' component={PlayerShow}/>
-
+              <Route exact path='/players/:id/edit' component={PlayerEditForm}/>
             </Switch>
             </div>
       </Router >

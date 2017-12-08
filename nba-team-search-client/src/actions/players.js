@@ -1,4 +1,5 @@
 import { resetPlayerForm } from './playerForm';
+import { updatePlayerSuccess } from './playerEditForm';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -16,6 +17,16 @@ const addPlayer = player => {
   }
 }
 
+const editPlayer = (player) => {
+  const request = new Request(`${API_URL}/players/${player.id}`, {
+    method: 'PATCH',
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    }),
+    body: JSON.stringify({player: player})
+  });
+}
+
 export const fetchPlayers = () => {
   return dispatch => {
     return fetch(`${API_URL}/players`)
@@ -24,7 +35,7 @@ export const fetchPlayers = () => {
       .catch(error => console.log(error));
   }
 }
-//put debugger in getPlayers
+
 export const createPlayer = player => {
   return dispatch => {
     return fetch(`${API_URL}/players`, {
@@ -40,5 +51,16 @@ export const createPlayer = player => {
         dispatch(resetPlayerForm())
       })
       .catch(error => console.log(error))
+  }
+}
+
+export const updatePlayer = player => {
+  return dispatch => {
+    return editPlayer(player).then(response => {
+      dispatch(updatePlayerSuccess(response));
+    }).catch(error => {
+      throw(error);
+    })
+
   }
 }

@@ -1,3 +1,4 @@
+
 const initialState = {
   name: '',
   height: 0,
@@ -15,6 +16,11 @@ export default (state= initialState, action) => {
     case 'RESET_PLAYER_FORM':
       return initialState;
 
+    case 'UPDATE_PLAYER_SUCCESS':
+      return [
+        ...state.filter(player => player.id !== action.player.id),
+        Object.assign({}, action.player)
+      ]
     default:
       return state;
   }

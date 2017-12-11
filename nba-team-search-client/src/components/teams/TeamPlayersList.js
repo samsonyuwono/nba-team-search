@@ -1,22 +1,22 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types';
 
-const TeamPlayersList = (props) => {
-  function listPlayers() {
-    const sortedPlayers = props.players.filter(player => player.team.id === props.team.id)
-    return sortedPlayers.map(player => {
-      return (
-        <div key={player.id} >
-          <Link style={{ marginRight: '12px' }} to={`/players/${player.id}`}>{player.name}</Link>
-        </div>
-      )
-    })
-  }
+const TeamPlayersList = ({players}) => {
   return (
     <div>
-      {listPlayers()}
+      <h3>Players</h3>
+      <ul>
+        {players.map(player =>
+            <li key={player.id}>{player.name}</li>
+          )}
+      </ul>
     </div>
-  )
-}
+  );
+};
+
+
+TeamPlayersList.propTypes = {
+  players: PropTypes.object.isRequired
+};
 
 export default TeamPlayersList;

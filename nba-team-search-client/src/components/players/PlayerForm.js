@@ -23,7 +23,7 @@ class PlayerForm extends Component {
     const { name, height, weight, image_url } = this.props.playerFormData;
 
     return (
-      <div className="playerForm">
+      <div className='playerForm'>
         <h1>Add a player to a team</h1>
         <form onSubmit={this.handleOnSubmit}>
           <div>
@@ -36,7 +36,7 @@ class PlayerForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="height">Height:</label>
+            <label htmlFor="height">Height(cm):</label>
             <input
               type="number"
               onChange={this.handleOnChange}
@@ -54,7 +54,7 @@ class PlayerForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="image_url">Image:</label>
+            <label htmlFor="image_url">Image url:</label>
             <input
               type="text"
               onChange={this.handleOnChange}
@@ -62,14 +62,15 @@ class PlayerForm extends Component {
               value={image_url}
             />
           </div>
-            <div>
-              <label htmlFor="team_id">Team number:</label>
-              <input
-                type="text"
-                onChange={this.handleOnChange}
-                name="team_id"
-              />
-            </div>
+
+          <div>
+            <label htmlFor="team_id">Team Number:</label>
+            <input
+              type="number"
+              onChange={this.handleOnChange}
+              name="team_id"
+            />
+          </div>
 
           <button type="submit">Add Player</button>
         </form>
@@ -84,4 +85,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updatePlayerFormData, createPlayer })(PlayerForm);
+export default connect(mapStateToProps, {
+  updatePlayerFormData,
+  createPlayer
+})(PlayerForm);

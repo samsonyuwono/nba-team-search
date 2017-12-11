@@ -1,25 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PlayerForm from '../players/PlayerForm';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const TeamShow = ({team, players}) => {
-  const teamPlayers = players.filter(player => player.team.id === team.id)
+import { getTeams } from '../../actions/teams'
+import { fetchPlayers } from '../../actions/players'
 
-    const teamShow = teamPlayers.map(player =>{
-      return <div key={player.id}>
-        {player.name}
+class TeamShow extends Component {
+
+  componentDidMount() {
+    this.props.getTeams()
+    this.props.fetchPlayers()
+  }
+
+  render(){
+    const { match:  params } = this.props
+    const teamId = this.props.match.params.id
+
+    console.log(this.props)
+
+    return(
+      <div className="PlayerInfo">
+      <h1> Roster </h1>
+
+      < PlayerForm />
       </div>
-    }
-  )
- };
-
-
-TeamShow.propTypes = {
-  team: PropTypes.string,
-  players: PropTypes.string
+    )
+  }
 }
 
+const mapStateToProps = (state) => {
+  return ({
+    teams: state.teams,
+    players: state.players
+  })
+}
 
-
-
-export default TeamShow;
+export default connect (mapStateToProps, { getTeams, fetchPlayers })(TeamShow);

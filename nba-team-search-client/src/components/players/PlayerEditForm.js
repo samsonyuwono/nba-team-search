@@ -14,10 +14,7 @@ class PlayerEditForm extends Component {
     this.state = {
       isEditing: false,
       player: this.props.player,
-      // name: this.props.name,
-      // height: this.props.height,
-      // weight: this.props.weighht,
-      // image_url: this.props.image_url
+
     }
     this.updatePlayerState = this.updatePlayerState.bind(this);
     this.savePlayer = this.savePlayer.bind(this);
@@ -62,6 +59,7 @@ class PlayerEditForm extends Component {
 
 const mapStateToProps = state => {
   return {
+    player: state.player,
     playerEditFormData: state.playerEditFormData
   }
 }

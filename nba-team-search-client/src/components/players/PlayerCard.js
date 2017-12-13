@@ -9,7 +9,8 @@ const PlayerCard = ({ team, player }) => (
     <img className="PlayerImage" src={player.image_url} alt={player.name} />
     <div>
       <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}`}>Click here</Link> <br />
-      <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}/edit`}>Edit Player</Link>
+      <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}/edit`}>Edit Player</Link> <br />
+      <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}/delete`}>Delete Player</Link>
     </div>
   </div>
 )

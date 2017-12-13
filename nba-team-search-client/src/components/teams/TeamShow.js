@@ -13,22 +13,31 @@ class TeamShow extends Component {
   }
 
   render(){
-    const { match:  params } = this.props
-    const teamId = this.props.match.params.id
+    const teamShow = () => {
+      const players = this.props.players
+      const teamId = this.props.match.params.id
+        const sortedPlayers = players.filter(player => player.team_id == teamId)
+          return sortedPlayers.map(player=>{
+            return(
+          <div key={player.id}>
+            <p>{player.name}</p>
+          </div>
+        )
+    })
+  }
 
-    console.log(this.props)
 
     return(
-      <div className="PlayerInfo">
+      <div>
       <h1> Roster </h1>
-
+      <p>{teamShow()}</p>
       < PlayerForm />
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return ({
     teams: state.teams,
     players: state.players

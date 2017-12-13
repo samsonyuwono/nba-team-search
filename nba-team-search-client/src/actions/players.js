@@ -9,9 +9,23 @@ const setPlayers = players => {
   }
 }
 
+const  setPlayerData = player => {
+  return {
+    type: 'FETCH_PLAYER_SUCCESS',
+    player
+  }
+}
+
 const addPlayer = player => {
   return {
     type: 'CREATE_PLAYER_SUCCESS',
+    player
+  }
+}
+
+const updatePlayer = player => {
+  return {
+    type: 'UPDATE_PLAYER_SUCCESS',
     player
   }
 }
@@ -22,6 +36,15 @@ export const fetchPlayers = () => {
       .then(response => response.json())
       .then(players => dispatch(setPlayers(players)))
       .catch(error => console.log(error));
+  }
+}
+
+export const fetchPlayer = (playerId) => {
+  return dispatch => {
+    return fetch(`${API_URL}/players/${playerId}`)
+    .then(response => response.json())
+    .then(player => dispatch(setPlayerData(player)))
+    .catch(error => console.log(error))
   }
 }
 
@@ -38,6 +61,23 @@ export const createPlayer = player => {
       .then(player => {
         dispatch(addPlayer(player))
         dispatch(resetPlayerForm())
+      })
+      .catch(error => console.log(error))
+  }
+}
+
+export const editPlayer = player => {
+  return dispatch => {
+    return fetch(`${API_URL}/players`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ player: player })
+    })
+      .then(response => response.json())
+      .then(player => {
+        dispatch(updatePlayer(player))
       })
       .catch(error => console.log(error))
   }

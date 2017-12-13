@@ -8,7 +8,7 @@ const TeamCard = ({ team }) => (
     <p>Losses: {team.losses} </p>
     <img className="TeamImage" src={team.logo_url} alt={team.name} />
     <div>
-      <Link style={{ marginBottom: '5px'}} to={`/teams/${team.id}`}>Click here</Link> <br />
+      <Link style={{ marginBottom: '5px'}} to={`/teams/${team.id}`}>Roster</Link> <br />
       <Link style={{ marginBottom: '5px'}} to={`/players/${team.id}/edit`}>Delete Team</Link>
     </div>
   </div>

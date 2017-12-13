@@ -20,24 +20,23 @@ class TeamShow extends Component {
           return sortedPlayers.map(player=>{
             return(
           <div key={player.id}>
-            <p>{player.name}</p>
-          </div>
-        )
-    })
-  }
-
-
+          <img className="PlayerShow" src={player.image_url} alt={player.name} /><br></br>
+            {player.name}
+            </div>
+          )
+        })
+      }
     return(
       <div>
       <h1> Roster </h1>
-      <p>{teamShow()}</p>
+      <h2>{teamShow()}</h2>
       < PlayerForm />
       </div>
     )
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return ({
     teams: state.teams,
     players: state.players

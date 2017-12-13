@@ -16,7 +16,7 @@ class Api::TeamsController < ApplicationController
   end
 
   def show
-    render json: @team
+    render json: @team.players
   end
 
   def update

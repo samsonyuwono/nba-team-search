@@ -12,7 +12,6 @@ const reducers = combineReducers({
   teamFormData,
   players,
   playerFormData
-
 });
 const middleware = [thunk];
 

@@ -18,11 +18,9 @@ class PlayerShow extends Component {
           return sortedPlayers.map(player=>{
             return(
         <div key={player.id}>
-          <img className="PlayerShow" src={player.image_url} alt={player.name} /><br></br>
-            {player.name}
-          <div>
+          <img className="PlayerShow" src={player.image_url} alt={player.name} /><br></ br>
+            <label>{player.name}</label><input/><br></ br>
             Height: {player.height} cm
-            </div>
           </div>
           )
         })

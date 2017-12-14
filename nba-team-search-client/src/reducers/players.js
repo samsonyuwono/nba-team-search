@@ -9,9 +9,6 @@ export default (state = [], action) => {
     case 'FETCH_PLAYER':
         return action.player;
 
-    case 'UPDATE_PLAYER_SUCCESS':
-      return { players: state.filter(state => state.id !== action.player.id).concat(action.player)}
-
     default:
       return state
     }

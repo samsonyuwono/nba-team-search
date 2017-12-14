@@ -45,7 +45,7 @@ class PlayerForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="weight">Weight:</label>
+            <label htmlFor="weight">Weight(lb):</label>
             <input
               type="number"
               onChange={this.handleOnChange}

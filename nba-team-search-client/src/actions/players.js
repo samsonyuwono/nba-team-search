@@ -66,15 +66,14 @@ export const createPlayer = player => {
   }
 }
 
-export const editPlayer = (playerId) => {
-  debugger;
+export const editPlayer = (playerId, player) => {
   return dispatch => {
     return fetch(`${API_URL}/players/${playerId}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ playerId : playerId })
+      body: JSON.stringify({ player: player })
     })
       .then(response => response.json())
       .then(player => {

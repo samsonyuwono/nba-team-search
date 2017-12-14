@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import PlayerCard from '../../components/players/PlayerCard';
 import PlayerForm from '../../components/players/PlayerForm';
 import { fetchPlayers } from '../../actions/players'
@@ -18,7 +17,7 @@ class PlayersList extends Component {
       {this.props.players.map(player => <PlayerCard key={player.id} player=
         {player} />)}
         <PlayerForm />
-   </div>
+    </div>
     );
   }
 }

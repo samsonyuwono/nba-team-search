@@ -1,17 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { fetchPlayers } from '../../actions/players'
 
-const PlayerShow = (props) => {
-  console.log(props)
-  return (
-    <div className="PlayerShow">
-      <h1>This is a show page for players</h1>
+class PlayerShow extends Component {
 
-    </div>
-  )
+  componentDidMount() {
+    this.props.fetchPlayers()
+  }
+
+  render(){
+    console.log(this.props)
+    const playerShow = () => {
+      const players = this.props.players
+      const playerId = parseInt(this.props.match.params.id)
+        const sortedPlayers = players.filter(player => player.id === playerId)
+          return sortedPlayers.map(player=>{
+            return(
+        <div key={player.id}>
+          <img className="PlayerShow" src={player.image_url} alt={player.name} /><br></br>
+            {player.name}
+          <div>
+            Height: {player.height} cm
+            </div>
+          </div>
+          )
+        })
+      }
+    return(
+      <div>
+      <h1> Player </h1>
+      <h2>{playerShow()}</h2>
+      <p>Edit Form?</p>
+      </div>
+    )
+  }
 }
 
+const mapStateToProps = (state) => {
+  return ({
+    players: state.players
+  })
+}
 
-
-
-export default PlayerShow;
+export default connect (mapStateToProps, { fetchPlayers })(PlayerShow);

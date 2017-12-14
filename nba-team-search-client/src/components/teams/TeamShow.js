@@ -13,10 +13,11 @@ class TeamShow extends Component {
   }
 
   render(){
+    console.log(this.props)
     const teamShow = () => {
       const players = this.props.players
-      const teamId = this.props.match.params.id
-        const sortedPlayers = players.filter(player => player.team_id == teamId)
+      const teamId = parseInt(this.props.match.params.id)
+        const sortedPlayers = players.filter(player => player.team_id === teamId)
           return sortedPlayers.map(player=>{
             return(
           <div key={player.id}>

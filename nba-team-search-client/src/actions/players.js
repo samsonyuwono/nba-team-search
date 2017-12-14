@@ -9,10 +9,10 @@ const setPlayers = players => {
   }
 }
 
-const  setPlayerData = player => {
+const  setPlayerData = playerId => {
   return {
     type: 'FETCH_PLAYER_SUCCESS',
-    player
+    playerId
   }
 }
 
@@ -66,14 +66,15 @@ export const createPlayer = player => {
   }
 }
 
-export const editPlayer = player => {
+export const editPlayer = (playerId) => {
+  debugger;
   return dispatch => {
-    return fetch(`${API_URL}/players`, {
+    return fetch(`${API_URL}/players/${playerId}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ player: player })
+      body: JSON.stringify({ playerId : playerId })
     })
       .then(response => response.json())
       .then(player => {
@@ -82,3 +83,29 @@ export const editPlayer = player => {
       .catch(error => console.log(error))
   }
 }
+
+// export const updatePlayer = (state, playerId) => {
+//   return dispatch => {
+//     return fetch(`http://localhost:3001/api/players/${playerId}`, {
+//       method: 'PATCH',
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         player: {
+//           name: state.name,
+//           height: state.height,
+//           weight: state.weight,
+//           image_url: state.image_url,
+//         }
+//       })
+//     }).then(response  => {
+//       return response.json()
+//     }).then(responseJson => {
+//       dispatch({type: 'UPDATE_PLAYER_SUCCESS', payload: responseJson})
+//     }).catch(e => {
+//       console.log(e)
+//     })
+//   }
+// }

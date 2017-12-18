@@ -5,13 +5,25 @@ import { fetchPlayers } from '../../actions/players';
 import { editPlayer } from '../../actions/players'
 
 class PlayerEditForm extends Component {
+
   componentWillMount(){
     this.props.fetchPlayers()
   }
 
-  handleOnChange = event => {
-    const { name, value } = event.target;
-    const currentPlayerFormData = Object.assign({}, this.props.playerFormData, {
+  componentDidMount(){
+    const allPlayers = this.props.players
+    const currentPlayer = this.props.match.params.id
+    const playerFormData = allPlayers.filter(allPlayer => allPlayer.id == currentPlayer)
+    this.props.updatePlayerFormData(playerFormData)
+
+  }
+  //const playerId = this.props.match.params.id pass this as arg to action creator and use it to retrieve playerFormData
+  //editPlayer
+
+handleOnChange = event => {
+  // debugger;
+    const { name, value } = event.target
+    const currentPlayerFormData = Object.assign({},this.props.playerFormData, {
       [name]: value
       })
       this.props.updatePlayerFormData(currentPlayerFormData)
@@ -19,26 +31,32 @@ class PlayerEditForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    const playerId = this.props.match.params
-    this.props.editPlayer(this.state, playerId)
+    const playerId = this.props.match.params.id
+    this.props.editPlayer(playerId, this.props.playerFormData)
   }
 
   render() {
-    const playerEdit = (name, height, weight, image_url) => {
-      const allPlayers = this.props.players
-      const currentPlayer = this.props.match.params.id
-        const playerEdit = allPlayers.filter(allPlayer => allPlayer.id == currentPlayer)
+    const {name, height, weight, image_url, team_id} = this.props.playerFormData
+    console.log(this.props.players)
+    //current player id find in players array
+    console.log(this.props.playerFormData)
+    console.log(this.props.playerFormData.id)
+      //make a function that renders the form
 
-          return playerEdit.map(player=>{
+// if !this.props.playerFormData return "doesn't exist" //no map needed just return the fields
+// else render currentPlayerFormData
+
             return(
-              <div key={player.id}>
-              <form onSubmit={this.handleOnSubmit}>
+
+              <div className="editPlayerForm">
+              <h1>Edit the player</h1>
+              <form onSubmit = {event => this.handleOnSubmit(event) }>
               <label htmlFor="playerName">Player Name: </label>
                 <input
-                type="text"
+                type="texty"
                 name="name"
                 onChange={this.handleOnChange}
-                value={player.name}
+                value={name}
                 />
                 <br></ br>
                 <label htmlFor="playerHeight">Player Height: </label>
@@ -46,7 +64,7 @@ class PlayerEditForm extends Component {
                   type="number"
                   name="height"
                   onChange={this.handleOnChange}
-                  value={player.height}
+                  value={height}
                   />
                   <br></ br>
                 <label htmlFor="playerWeight">Player Weight: </label>
@@ -54,7 +72,7 @@ class PlayerEditForm extends Component {
                   type="number"
                   name="weight"
                   onChange={this.handleOnChange}
-                  value={player.weight}
+                  value={weight}
                   />
                   <br></ br>
                   <label htmlFor="playerImage">Player Image: </label>
@@ -62,28 +80,34 @@ class PlayerEditForm extends Component {
                     type="text"
                     name="image_url"
                     onChange={this.handleOnChange}
-                    value={player.image_url}
+                    value={image_url}
                     />
                     <br></ br>
+                    <div>
+                      <label htmlFor="team_id">Team Number:</label>
+                      <input
+                        type="number"
+                        onChange={this.handleOnChange}
+                        name="team_id"
+                        value={team_id}
+                      />
+                    </div>
                 <input type="submit" value="Edit Player" />
                 </form>
               </div>
           )
-        })
+        }
       }
-    return (
-      <div>
-      <h1>This is the player edit page</h1>
-      {playerEdit()}
-
-      </div>
-    )
-  }
-}
 
 const mapStateToProps = (state) => {
+  // if(this.props.match.params.id){
+  //   return {
+  //     player: this.props.players.find(player => player.id === this.props.match.params.id)
+  //   }
+  // }
   return  {
-    players: state.players
+    players: state.players,
+    playerFormData: state.playerFormData
   }
 }
 

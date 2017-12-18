@@ -1,4 +1,6 @@
 import { resetPlayerForm } from './playerForm';
+import { updatePlayerSuccess } from './playerEditForm'
+// import { updatePlayerFormData } from './playerForm';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -9,13 +11,6 @@ const setPlayers = players => {
   }
 }
 
-const  setPlayerData = playerId => {
-  return {
-    type: 'FETCH_PLAYER_SUCCESS',
-    playerId
-  }
-}
-
 const addPlayer = player => {
   return {
     type: 'CREATE_PLAYER_SUCCESS',
@@ -23,12 +18,19 @@ const addPlayer = player => {
   }
 }
 
-const updatePlayer = player => {
+const updatePlayer = playerFormData => {
   return {
     type: 'UPDATE_PLAYER_SUCCESS',
-    player
+    playerFormData
   }
 }
+
+// const removePlayer = playerId => {
+//   return {
+//     type: 'DELETE_PLAYER_SUCCESS',
+//     playerId: playerId
+//   }
+// }
 
 export const fetchPlayers = () => {
   return dispatch => {
@@ -36,15 +38,6 @@ export const fetchPlayers = () => {
       .then(response => response.json())
       .then(players => dispatch(setPlayers(players)))
       .catch(error => console.log(error));
-  }
-}
-
-export const fetchPlayer = (playerId) => {
-  return dispatch => {
-    return fetch(`${API_URL}/players/${playerId}`)
-    .then(response => response.json())
-    .then(player => dispatch(setPlayerData(player)))
-    .catch(error => console.log(error))
   }
 }
 
@@ -77,34 +70,18 @@ export const editPlayer = (playerId, player) => {
     })
       .then(response => response.json())
       .then(player => {
-        dispatch(updatePlayer(player))
+        dispatch(updatePlayerSuccess(player))
       })
       .catch(error => console.log(error))
   }
 }
 
-// export const updatePlayer = (state, playerId) => {
+// export const deletePlayer = (playerId, player) => {
 //   return dispatch => {
-//     return fetch(`http://localhost:3001/api/players/${playerId}`, {
-//       method: 'PATCH',
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({
-//         player: {
-//           name: state.name,
-//           height: state.height,
-//           weight: state.weight,
-//           image_url: state.image_url,
-//         }
-//       })
-//     }).then(response  => {
-//       return response.json()
-//     }).then(responseJson => {
-//       dispatch({type: 'UPDATE_PLAYER_SUCCESS', payload: responseJson})
-//     }).catch(e => {
-//       console.log(e)
+//     return fetch(`${API_URL}/players/${playerId}`, {
+//       method: "DELETE",
+//     }).then(response =>{
+//       dispatch()
 //     })
 //   }
 // }

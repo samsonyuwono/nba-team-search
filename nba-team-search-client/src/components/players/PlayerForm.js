@@ -20,7 +20,7 @@ class PlayerForm extends Component {
   }
 
   render() {
-    const { name, height, weight, image_url } = this.props.playerFormData;
+    const { name, height, weight, image_url, team_id } = this.props.playerFormData;
 
     return (
       <div className='playerForm'>
@@ -69,6 +69,7 @@ class PlayerForm extends Component {
               type="number"
               onChange={this.handleOnChange}
               name="team_id"
+              value={team_id}
             />
           </div>
 

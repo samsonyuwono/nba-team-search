@@ -4,5 +4,3 @@ export const updatePlayerSuccess = playerFormData => {
     playerFormData
   }
 }
-
-// export const UPDATE_PLAYER_SUCCESS = 'UPDATE_PLAYER_SUCCESS';

@@ -79,7 +79,12 @@ export const editTeam = (teamId, team) => {
 export const deleteTeam = (teamId) => {
   return dispatch => {
     return fetch(`${API_URL}/teams/${teamId}`, {
-      method: "DELETE"
+      method: "DELETE",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ teamId : teamId })
     })
     .then(response => response.json())
     .then(team => {

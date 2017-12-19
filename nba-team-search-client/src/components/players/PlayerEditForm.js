@@ -1,57 +1,83 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PlayerForm from './PlayerForm'
 
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import * as updatePlayer from '../../actions/players';
-
+import { updatePlayerFormData } from '../../actions/playerForm'
+import { fetchPlayers } from '../../actions/players'
+import { editPlayer } from '../../actions/players'
 
 
 class PlayerEditForm extends Component {
-  constructor(props, context) {
-    super(props, context)
-    this.state = {
-      isEditing: false,
-      player: this.props.player,
-
-    }
-    this.updatePlayerState = this.updatePlayerState.bind(this);
-    this.savePlayer = this.savePlayer.bind(this);
-    this.toggleEdit = this.toggleEdit.bind(this);
+  componentWillMount(){
+    this.props.fetchPlayers()
   }
 
-  updatePlayerState(event) {
-    const field = event.target.name
-    const player = this.state.player
-    player[field] = event.target.value;
-    return this.setState({player: player})
+  componentDidMount(){
+    const allPlayers = this.props.players
+    const currentPlayer = this.props.match.params.id
+    const playerFormData = allPlayers.filter(allPlayer => allPlayer.id == currentPlayer)
+    this.props.updatePlayerFormData(playerFormData)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(this.props.player.id !== nextProps.player.id){
-      this.setState({ player: nextProps.player });
-    }
+  handleOnChange = event => {
+    const { name, value } = event.target
+    const currentPlayerFormData = Object.assign({}, this.props.playerFormData, {
+      [name]: value
+    })
+    this.props.updatePlayerFormData(currentPlayerFormData)
   }
 
-  toggleEdit() {
-    this.setState({isEditing: !this.state.isEditing})
-  }
-
-  savePlayer(event) {
+  handleOnSubmit = event => {
     event.preventDefault();
-    this.props.actions.updatePlayer(this.state.player)
+    const playerId = this.props.match.params.id
+    this.props.editPlayer(playerId, this.props.playerFormData)
   }
 
   render() {
-    return (
-      <div className= "editForm">
-      <h1> This is the edit player page! </h1>
-      <PlayerForm
-        player={this.state.player}
-        onSave= {this.savePlayer}
-        onChange={this.updatePlayerState}
-      />
+    return(
+      <div className ="editPlayerForm">
+      <h1>Update your player</h1>
+      <form onSubmit = {event => this.handleOnSubmit(event) }>
+      <label htmlFor="playerName">Player Name: </label>
+        <input
+        type="text"
+        name="name"
+        onChange={this.handleOnChange}
+
+        />
+        <br></ br>
+
+      <label htmlFor="playerheight">Player Height: </label>
+        <input
+        type="number"
+        name="height"
+        onChange={this.handleOnChange}
+        />
+        <br></ br>
+
+      <label htmlFor="playerWeight">Player Weight: </label>
+        <input
+        type="number"
+        name="weight"
+        onChange={this.handleOnChange}
+        />
+        <br></ br>
+      <label htmlFor="playerImage">Player Image: </label>
+        <input
+        type="text"
+        name="logo_url"
+        onChange={this.handleOnChange}
+        />
+        <br></ br>
+
+      <label htmlFor="team_id">Team Number: </label>
+        <input
+        type="number"
+        name="team_id"
+        onChange={this.handleOnChange}
+        />
+        <br></ br>
+        <input type="submit" value="Edit Player" />
+      </form>
       </div>
     )
   }
@@ -59,18 +85,10 @@ class PlayerEditForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    playerEditFormData: state.playerEditFormData
+    players: state.players,
+    playerFormData: state.playerFormData
   }
 }
 
-PlayerEditForm.propTypes = {
-  player: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
-}
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(updatePlayer, dispatch)
-  }
-}
-export default connect (mapStateToProps, mapDispatchToProps)(PlayerEditForm);
+export default connect (mapStateToProps, {updatePlayerFormData, editPlayer, fetchPlayers })(PlayerEditForm);

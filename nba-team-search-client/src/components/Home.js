@@ -1,4 +1,5 @@
 import React from 'react'
+import Auth from './auth/Auth'
 
 const Home = (props) => {
   return(
@@ -7,7 +8,9 @@ const Home = (props) => {
       <div className="padding-bottom">
         <h3> Open source app for organizing your Rec League</h3>
       </div>
-
+      <div className="padding-bottom">
+       <Auth />
+     </div>
       <div className="padding-top">
         <p className="padding-top">Manage your teams and players all in one app</p>
         <p> This is an open sourced project, so if you would like to contribute please go to our

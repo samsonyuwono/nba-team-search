@@ -16,15 +16,14 @@ class TeamShow extends Component {
   handleOnClick = () => {
     const teamId = this.props.match.params.id
     this.props.deleteTeam(teamId)
-    console.log("deleted!")
   }
 
   render(){
     const teamShow = () => {
       const players = this.props.players
       const teamId = parseInt(this.props.match.params.id)
-        const sortedPlayers = players.filter(player => player.team_id === teamId)
-          return sortedPlayers.map(player=>{
+        const sortedTeamPlayers = players.filter(player => player.team_id === teamId)
+          return sortedTeamPlayers.map(player=>{
             return(
           <div key={player.id}>
           <img className="PlayerShow" src={player.image_url} alt={player.name} /><br></br>

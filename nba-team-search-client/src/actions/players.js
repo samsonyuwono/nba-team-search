@@ -23,12 +23,12 @@ const updatePlayer = playerFormData => {
   }
 }
 
-// const removePlayer = playerId => {
-//   return {
-//     type: 'DELETE_PLAYER_SUCCESS',
-//     playerId: playerId
-//   }
-// }
+const destroyPlayer = playerId => {
+  return {
+    type: 'DELETE_PLAYER',
+    playerId
+  }
+}
 
 export const fetchPlayers = () => {
   return dispatch => {
@@ -74,12 +74,18 @@ export const editPlayer = (playerId, player) => {
   }
 }
 
-// export const deletePlayer = (playerId, player) => {
-//   return dispatch => {
-//     return fetch(`${API_URL}/players/${playerId}`, {
-//       method: "DELETE",
-//     }).then(response =>{
-//       dispatch()
-//     })
-//   }
-// }
+export const deletePlayer = (playerId) => {
+  return dispatch => {
+    return fetch(`${API_URL}/players/${playerId}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(player => {
+      dispatch(destroyPlayer(playerId))
+    })
+    .catch(error => console.log(error))
+  }
+}

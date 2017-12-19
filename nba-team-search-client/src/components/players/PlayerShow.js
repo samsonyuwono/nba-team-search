@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchPlayers } from '../../actions/players'
+import { deletePlayer } from '../../actions/players'
 
 class PlayerShow extends Component {
 
@@ -9,12 +10,18 @@ class PlayerShow extends Component {
     this.props.fetchPlayers()
   }
 
+  handleOnClick = () => {
+    const playerId = this.props.match.params.id
+    this.props.deletePlayer(playerId)
+    console.log("deleted!")
+  }
+
   render(){
-    console.log(this.props)
+    console.log(this.props.players)
     const playerShow = () => {
       const players = this.props.players
       const playerId = parseInt(this.props.match.params.id)
-        const sortedPlayers = players.filter(player => player.id === playerId)
+        const sortedPlayers = players.filter(player => player.id == playerId)
           return sortedPlayers.map(player=>{
             return(
         <div key={player.id}>
@@ -24,7 +31,6 @@ class PlayerShow extends Component {
             Height: {player.height} cm
             <br></ br>
             Height: {player.weight} lb
-
           </div>
           )
         })
@@ -33,7 +39,7 @@ class PlayerShow extends Component {
       <div>
       <h1> Player </h1>
       <h2>{playerShow()}</h2>
-
+      <button onClick={this.handleOnClick}>Delete Player</button>
       </div>
     )
   }
@@ -45,4 +51,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect (mapStateToProps, { fetchPlayers })(PlayerShow);
+export default connect (mapStateToProps, { fetchPlayers, deletePlayer })(PlayerShow);

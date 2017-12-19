@@ -10,7 +10,6 @@ const PlayerCard = ({ team, player }) => (
     <div>
       <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}`}>Click here</Link> <br />
       <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}/edit`}>Edit Player</Link> <br />
-      <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}/delete`}>Delete Player</Link>
     </div>
   </div>
 )

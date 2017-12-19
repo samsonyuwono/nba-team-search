@@ -6,6 +6,8 @@ import Home from '../components/Home'
 import TeamsList from './teams/TeamsList';
 import TeamShow from '../components/teams/TeamShow';
 import TeamForm from '../components/teams/TeamForm'
+import TeamEditForm from '../components/teams/TeamEditForm';
+
 import PlayersList from './players/PlayersList';
 import PlayerForm from '../components/players/PlayerForm'
 import PlayerShow from '../components/players/PlayerShow';
@@ -25,6 +27,7 @@ class App extends Component {
               <Route exact path='/teams/new' component={TeamForm}/>
               <Route exact path='/teams/:id' component={TeamShow}/>
 							 <Route exact path='/teams' component={TeamsList}/>
+               <Route exact path='/teams/:id/edit' component={TeamEditForm}/>
                <Route exact path='/players' component={PlayersList}/>
               <Route exact path='/players/new' component={PlayerForm}/>
               <Route exact path='/players/:id' component={PlayerShow}/>

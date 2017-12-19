@@ -19,8 +19,12 @@ class PlayerShow extends Component {
             return(
         <div key={player.id}>
           <img className="PlayerShow" src={player.image_url} alt={player.name} /><br></ br>
-            <label>{player.name}</label><input/><br></ br>
+            <label>{player.name}</label>
+            <br></ br>
             Height: {player.height} cm
+            <br></ br>
+            Height: {player.weight} lb
+
           </div>
           )
         })
@@ -29,7 +33,7 @@ class PlayerShow extends Component {
       <div>
       <h1> Player </h1>
       <h2>{playerShow()}</h2>
-      <p>Edit Form?</p>
+
       </div>
     )
   }

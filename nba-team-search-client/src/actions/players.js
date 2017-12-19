@@ -1,6 +1,4 @@
 import { resetPlayerForm } from './playerForm';
-import { updatePlayerSuccess } from './playerEditForm'
-// import { updatePlayerFormData } from './playerForm';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -70,7 +68,7 @@ export const editPlayer = (playerId, player) => {
     })
       .then(response => response.json())
       .then(player => {
-        dispatch(updatePlayerSuccess(player))
+        dispatch(updatePlayer(player))
       })
       .catch(error => console.log(error))
   }

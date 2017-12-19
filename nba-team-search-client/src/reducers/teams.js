@@ -6,6 +6,9 @@ export default (state = [], action) => {
     case 'CREATE_TEAM_SUCCESS':
       return state.concat(action.team);
 
+    case 'UPDATE_TEAM_SUCCESS':
+      return {team: state.filter(s => s.id !== action.state.id).concat(state)}
+
     default:
       return state;
   }

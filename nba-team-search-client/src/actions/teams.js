@@ -17,6 +17,13 @@ const addTeam = team => {
   }
 }
 
+const updateTeam = teamFormData => {
+  return {
+    type: 'UPDATE_TEAM_SUCCESS',
+    teamFormData
+  }
+}
+
 // ** Async Actions **
 export const getTeams = () => {
   return dispatch => {
@@ -40,6 +47,23 @@ export const createTeam = team => {
       .then(team => {
         dispatch(addTeam(team))
         dispatch(resetTeamForm())
+      })
+      .catch(error => console.log(error))
+  }
+}
+
+export const editTeam = (teamId, team) => {
+  return dispatch => {
+    return fetch(`${API_URL}/teams/${teamId}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ team: team })
+    })
+      .then(response => response.json())
+      .then(team => {
+        dispatch(updateTeam(team))
       })
       .catch(error => console.log(error))
   }

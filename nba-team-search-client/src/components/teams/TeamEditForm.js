@@ -19,6 +19,8 @@ class TeamEditForm extends Component {
   }
 
   handleOnChange = event => {
+    console.log(this.props.teams)
+    console.log(this.props.teams.name)
     const { name, value } = event.target
     const currentTeamFormData = Object.assign({}, this.props.teamFormData, {
       [name]: value
@@ -35,13 +37,14 @@ class TeamEditForm extends Component {
   render() {
     return(
       <div className ="editTeamForm">
-      <h1>Team edit page</h1>
+      <h1>Update your team</h1>
       <form onSubmit = {event => this.handleOnSubmit(event) }>
       <label htmlFor="teamName">Team Name: </label>
         <input
         type="text"
         name="name"
         onChange={this.handleOnChange}
+
         />
         <br></ br>
 
@@ -52,6 +55,7 @@ class TeamEditForm extends Component {
         onChange={this.handleOnChange}
         />
         <br></ br>
+
       <label htmlFor="teamlosses">Team Losses: </label>
         <input
         type="number"

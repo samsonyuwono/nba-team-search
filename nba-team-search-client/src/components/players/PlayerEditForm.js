@@ -34,52 +34,50 @@ handleOnChange = event => {
   }
 
   render() {
-// if !this.props.playerFormData return "doesn't exist" //no map needed just return the fields
-// else render currentPlayerFormData
-            return(
-              <div className="editPlayerForm">
-              <h1>Edit the player</h1>
-              <form onSubmit = {event => this.handleOnSubmit(event) }>
-              <label htmlFor="playerName">Player Name: </label>
-                <input
-                type="text"
-                name="name"
-                onChange={this.handleOnChange}
-                value = {this.props.players.name}
-                />
+    return(
+      <div className="editPlayerForm">
+      <h1>Edit the player</h1>
+      <form onSubmit = {event => this.handleOnSubmit(event) }>
+      <label htmlFor="playerName">Player Name: </label>
+        <input
+        type="text"
+        name="name"
+        onChange={this.handleOnChange}
+        value = {this.props.players.name}
+        />
             <br></ br>
-              <label htmlFor="playerHeight">Player Height: </label>
-                <input
-                type="number"
-                name="height"
-                onChange={this.handleOnChange}
-                  />
+      <label htmlFor="playerHeight">Player Height: </label>
+        <input
+        type="number"
+        name="height"
+        onChange={this.handleOnChange}
+          />
               <br></ br>
-              <label htmlFor="playerWeight">Player Weight: </label>
-                <input
-                type="number"
-                name="weight"
-                onChange={this.handleOnChange}
-                />
-                <br></ br>
-                <label htmlFor="playerImage">Player Image: </label>
-                 <input
-                 type="text"
-                 name="image_url"
-                 onChange={this.handleOnChange}
-                 />
-                <br></ br>
-                  <div>
-                <label htmlFor="team_id">Team Number:</label>
-                <input
-                  type="number"
-                  onChange={this.handleOnChange}
-                  name="team_id"
-                  />
-                </div>
-                <input type="submit" value="Edit Player" />
-                </form>
-              </div>
+      <label htmlFor="playerWeight">Player Weight: </label>
+        <input
+      type="number"
+        name="weight"
+        onChange={this.handleOnChange}
+        />
+        <br></ br>
+        <label htmlFor="playerImage">Player Image: </label>
+         <input
+         type="text"
+         name="image_url"
+         onChange={this.handleOnChange}
+         />
+        <br></ br>
+          <div>
+        <label htmlFor="team_id">Team Number:</label>
+        <input
+          type="number"
+          onChange={this.handleOnChange}
+          name="team_id"
+          />
+        </div>
+        <input type="submit" value="Edit Player" />
+        </form>
+      </div>
           )
         }
       }

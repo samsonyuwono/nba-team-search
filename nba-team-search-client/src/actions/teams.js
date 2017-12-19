@@ -24,6 +24,13 @@ const updateTeam = teamFormData => {
   }
 }
 
+const destroyTeam = teamId => {
+  return {
+    type: 'DELETE_TEAM',
+    teamId
+  }
+}
+
 // ** Async Actions **
 export const getTeams = () => {
   return dispatch => {
@@ -66,5 +73,21 @@ export const editTeam = (teamId, team) => {
         dispatch(updateTeam(team))
       })
       .catch(error => console.log(error))
+  }
+}
+
+export const deleteTeam = (teamId) => {
+  return dispatch => {
+    return fetch(`${API_URL}/teams/${teamId}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(team => {
+      dispatch(destroyTeam(teamId))
+    })
+    .catch(error => console.log(error))
   }
 }

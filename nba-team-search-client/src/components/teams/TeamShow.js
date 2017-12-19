@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { getTeams } from '../../actions/teams'
 import { fetchPlayers } from '../../actions/players'
+import { deleteTeam } from '../../actions/teams'
 
 class TeamShow extends Component {
 
@@ -12,8 +13,13 @@ class TeamShow extends Component {
     this.props.fetchPlayers()
   }
 
+  handleOnClick = () => {
+    const teamId = this.props.match.params.id
+    this.props.deleteTeam(teamId)
+    console.log("deleted!")
+  }
+
   render(){
-    console.log(this.props)
     const teamShow = () => {
       const players = this.props.players
       const teamId = parseInt(this.props.match.params.id)
@@ -23,7 +29,7 @@ class TeamShow extends Component {
           <div key={player.id}>
           <img className="PlayerShow" src={player.image_url} alt={player.name} /><br></br>
             {player.name}
-            </div>
+          </div>
           )
         })
       }
@@ -32,6 +38,7 @@ class TeamShow extends Component {
       <h1> Roster </h1>
       <h2>{teamShow()}</h2>
       < PlayerForm />
+      <button onClick={this.handleOnClick}>Delete Team</button>
       </div>
     )
   }
@@ -44,4 +51,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect (mapStateToProps, { getTeams, fetchPlayers })(TeamShow);
+export default connect (mapStateToProps, { getTeams, fetchPlayers, deleteTeam })(TeamShow);

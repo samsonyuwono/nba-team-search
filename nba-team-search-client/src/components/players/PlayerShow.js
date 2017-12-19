@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import {Redirect} from 'react-router-dom';
 import { fetchPlayers } from '../../actions/players'
 import { deletePlayer } from '../../actions/players'
 
@@ -13,7 +13,7 @@ class PlayerShow extends Component {
   handleOnClick = () => {
     const playerId = this.props.match.params.id
     this.props.deletePlayer(playerId)
-    console.log("deleted!")
+    {<Redirect to="/players" />}
   }
 
   render(){
@@ -22,6 +22,10 @@ class PlayerShow extends Component {
       const players = this.props.players
       const playerId = parseInt(this.props.match.params.id)
         const sortedPlayers = players.filter(player => player.id == playerId)
+        if (players === null){
+          return <Redirect to='/players'/>;
+        }
+        else{
           return sortedPlayers.map(player=>{
             return(
         <div key={player.id}>
@@ -32,14 +36,15 @@ class PlayerShow extends Component {
             <br></ br>
             Height: {player.weight} lb
           </div>
-          )
-        })
+            )
+          })
+        }
       }
     return(
       <div>
       <h1> Player </h1>
       <h2>{playerShow()}</h2>
-      <button onClick={this.handleOnClick}>Delete Player</button>
+      <button onClick={this.handleOnClick} >Delete Player</button>
       </div>
     )
   }

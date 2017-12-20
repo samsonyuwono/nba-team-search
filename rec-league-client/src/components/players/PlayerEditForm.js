@@ -7,6 +7,7 @@ import { editPlayer } from '../../actions/players'
 
 
 class PlayerEditForm extends Component {
+
   componentWillMount(){
     this.props.fetchPlayers()
   }
@@ -64,7 +65,7 @@ class PlayerEditForm extends Component {
       <label htmlFor="playerImage">Player Image: </label>
         <input
         type="text"
-        name="logo_url"
+        name="image_url"
         onChange={this.handleOnChange}
         />
         <br></ br>

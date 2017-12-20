@@ -31,7 +31,6 @@ const destroyTeam = teamId => {
   }
 }
 
-// ** Async Actions **
 export const getTeams = () => {
   return dispatch => {
     return fetch(`${API_URL}/teams`)

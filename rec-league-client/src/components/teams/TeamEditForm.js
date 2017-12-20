@@ -14,7 +14,7 @@ class TeamEditForm extends Component {
   componentDidMount(){
     const allTeams = this.props.teams
     const currentTeam = this.props.match.params.id
-    const teamFormData = allTeams.filter(allTeam => allTeam.id == currentTeam)
+    const teamFormData = allTeams.filter(allTeam => allTeam.id === currentTeam)
     this.props.updateTeamFormData(teamFormData)
   }
 

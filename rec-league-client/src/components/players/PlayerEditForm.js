@@ -14,7 +14,7 @@ class PlayerEditForm extends Component {
   componentDidMount(){
     const allPlayers = this.props.players
     const currentPlayer = this.props.match.params.id
-    const playerFormData = allPlayers.filter(allPlayer => allPlayer.id == currentPlayer)
+    const playerFormData = allPlayers.filter(allPlayer => allPlayer.id === currentPlayer)
     this.props.updatePlayerFormData(playerFormData)
   }
 

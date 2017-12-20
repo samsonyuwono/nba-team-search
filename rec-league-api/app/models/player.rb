@@ -4,5 +4,5 @@ class Player < ApplicationRecord
   validates :weight, numericality: { only_integer: true }
   validates :height, numericality: { only_integer: true }
   validates :image_url, presence: true
-34
+
 end

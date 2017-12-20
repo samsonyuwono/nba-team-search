@@ -13,7 +13,7 @@ class TeamShow extends Component {
     this.props.fetchPlayers()
   }
 
-  handleOnClick = () => {
+  handleOnDelete = () => {
     const teamId = this.props.match.params.id
     this.props.deleteTeam(teamId)
   }
@@ -37,7 +37,7 @@ class TeamShow extends Component {
       <h1> Roster </h1>
       <h2>{teamShow()}</h2>
       < PlayerForm />
-      <button onClick={this.handleOnClick}>Delete Team</button>
+      <button onClick={this.handleOnDelete}>Delete Team</button>
       </div>
     )
   }

@@ -31,7 +31,7 @@ class App extends Component {
                <Route exact path='/players' component={PlayersList}/>
               <Route exact path='/players/new' component={PlayerForm}/>
               <Route exact path='/players/:id' component={PlayerShow}/>
-              <Route exact path='/players/:id/edit' component={PlayerEditForm}/>
+              <Route exact path='/players/:id/edit' Redirect to="/players" component={PlayerEditForm}/>
             </Switch>
             </div>
       </Router >

@@ -29,7 +29,7 @@ class Api::TeamsController < ApplicationController
 
   def destroy
     if @team.destroy
-      render status: 204
+      render json: @teams
     else
       render json: { message: "Unable to remove this team" }, status: 400
     end
@@ -38,7 +38,7 @@ class Api::TeamsController < ApplicationController
   private
 
     def set_team
-      @team = Team.find_by(id: params[:id])
+      @team = Team.find(params[:id])
     end
 
     def team_params

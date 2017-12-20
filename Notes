@@ -1,7 +1,11 @@
-1. Get team show to show all of a team's players
-2. Get Players index page to show
-3. Redirect add team to Teams index
+
+
+4. Redirect add/edit+delete team/player to index pages
+5. Add css
+
 
 Stretch
 1. Standings
 2. Schedule
+3. Increase and decrease wins/losses
+4. Authentication

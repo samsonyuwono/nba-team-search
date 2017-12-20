@@ -27,4 +27,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, { fetchPlayers })(PlayersList);
+export default connect(mapStateToProps, { fetchPlayers})(PlayersList);

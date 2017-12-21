@@ -23,6 +23,12 @@ class TeamShow extends Component {
       const players = this.props.players
       const teamId = parseInt(this.props.match.params.id)
         const sortedTeamPlayers = players.filter(player => player.team_id === teamId)
+        if (sortedTeamPlayers.length === 0){
+          return(
+            <p>Please add players to your roster in the form below.</p>
+          )
+        }
+        else{
           return sortedTeamPlayers.map(player=>{
             return(
           <div key={player.id}>
@@ -32,6 +38,7 @@ class TeamShow extends Component {
           )
         })
       }
+    }
     return(
       <div>
       <h1> Roster </h1>

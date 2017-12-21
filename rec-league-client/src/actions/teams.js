@@ -75,7 +75,7 @@ export const editTeam = (teamId, team) => {
   }
 }
 
-export const deleteTeam = (teamId) => {
+export const deleteTeam = (teamId, history) => {
   return dispatch => {
     return fetch(`${API_URL}/teams/${teamId}`, {
       method: "DELETE",
@@ -90,5 +90,5 @@ export const deleteTeam = (teamId) => {
       dispatch(destroyTeam(teamId))
     })
     .catch(error => console.log(error))
-  }
-}
+   }
+ }

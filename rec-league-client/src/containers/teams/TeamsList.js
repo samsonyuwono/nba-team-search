@@ -24,7 +24,6 @@ class TeamsList extends Component {
         <div className="col-md-8">
         {this.props.children}
         <TeamForm />
-
       </div>
    </div>
     );

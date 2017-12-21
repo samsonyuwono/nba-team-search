@@ -32,6 +32,7 @@ class TeamEditForm extends Component {
     event.preventDefault();
     const teamId = this.props.match.params.id
     this.props.editTeam(teamId, this.props.teamFormData)
+    this.props.history.push('/teams')
   }
 
   render() {

@@ -21,10 +21,9 @@ class PlayerForm extends Component {
 
   render() {
     const { name, height, weight, image_url, team_id } = this.props.playerFormData;
-
     return (
       <div className='playerForm'>
-        <h1>Add a player to a team</h1>
+        <h1>Add a player to your team</h1>
         <form onSubmit={this.handleOnSubmit}>
           <div>
             <label htmlFor="name">Name:</label>

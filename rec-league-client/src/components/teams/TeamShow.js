@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PlayerForm from '../players/PlayerForm';
 import { connect } from 'react-redux';
-
+import { withRouter } from 'react-router';
 import { getTeams } from '../../actions/teams'
 import { fetchPlayers } from '../../actions/players'
 import { deleteTeam } from '../../actions/teams'
@@ -14,13 +14,17 @@ class TeamShow extends Component {
   }
 
   handleOnDelete = () => {
+    console.log(this.props.history)
+    // console.log(this.props.history.push('/teams'))
     const teamId = this.props.match.params.id
     this.props.deleteTeam(teamId)
+    this.props.history.push('/')
   }
 
   render(){
     const teamShow = () => {
       const players = this.props.players
+          console.log(players)
       const teamId = parseInt(this.props.match.params.id)
         const sortedTeamPlayers = players.filter(player => player.team_id === teamId)
         if (sortedTeamPlayers.length === 0){
@@ -33,7 +37,7 @@ class TeamShow extends Component {
             return(
           <div key={player.id}>
           <img className="PlayerShow" src={player.image_url} alt={player.name} /><br></br>
-            {player.name}
+          {player.name}
           </div>
           )
         })
@@ -57,4 +61,6 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect (mapStateToProps, { getTeams, fetchPlayers, deleteTeam })(TeamShow);
+export default withRouter(
+  connect (mapStateToProps, { getTeams, fetchPlayers, deleteTeam })(TeamShow)
+)

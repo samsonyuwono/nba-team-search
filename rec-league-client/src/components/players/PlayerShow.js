@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Redirect} from 'react-router-dom';
 import { fetchPlayers } from '../../actions/players'
 import { deletePlayer } from '../../actions/players'
 
@@ -11,15 +10,17 @@ class PlayerShow extends Component {
   }
 
   handleOnDelete = () => {
-    const playerId = this.props.match.params.id
-    this.props.deletePlayer(playerId)
+    const playerId = this.props.match.params.uid
+    console.log(playerId)
+    // this.props.deletePlayer(playerId)
+    // this.props.history.push('/players')
   }
 
   render(){
     const playerShow = () => {
       const players = this.props.players
       const playerId = parseInt(this.props.match.params.id)
-        const sortedPlayers = players.filter(player => player.id == playerId)
+        const sortedPlayers = players.filter(player => player.id === playerId)
           return sortedPlayers.map(player=>{
             return(
         <div key={player.id}>

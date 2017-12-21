@@ -31,6 +31,7 @@ class PlayerEditForm extends Component {
     event.preventDefault();
     const playerId = this.props.match.params.id
     this.props.editPlayer(playerId, this.props.playerFormData)
+    this.props.history.push('/players')
   }
 
   render() {

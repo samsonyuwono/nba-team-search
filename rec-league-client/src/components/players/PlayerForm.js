@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { updatePlayerFormData } from '../../actions/playerForm';
 import { createPlayer } from '../../actions/players';
+import TeamID from '../teams/TeamID';
 
 class PlayerForm extends Component {
 
@@ -63,7 +64,7 @@ class PlayerForm extends Component {
           </div>
 
           <div>
-            <label htmlFor="team_id">Team Number:</label>
+            <label htmlFor="team_id">Team ID:</label>
             <input
               type="number"
               onChange={this.handleOnChange}
@@ -74,6 +75,7 @@ class PlayerForm extends Component {
 
           <button type="submit">Add Player</button>
         </form>
+        <TeamID />
       </div>
     )
   }

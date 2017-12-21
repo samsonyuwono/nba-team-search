@@ -17,14 +17,16 @@ class PlayersList extends Component {
       {this.props.players.map(player => <PlayerCard key={player.id} player=
         {player} />)}
         <PlayerForm />
+        <br>
+        </ br>
     </div>
     );
   }
 }
 const mapStateToProps = (state) => {
   return ({
-    players: state.players
+    players: state.players,
   })
 }
 
-export default connect(mapStateToProps, { fetchPlayers})(PlayersList);
+export default connect(mapStateToProps, { fetchPlayers })(PlayersList);

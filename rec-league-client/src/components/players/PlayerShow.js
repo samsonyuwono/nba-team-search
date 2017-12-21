@@ -10,10 +10,10 @@ class PlayerShow extends Component {
   }
 
   handleOnDelete = () => {
-    const playerId = this.props.match.params.uid
+    const playerId = this.props.match.params.id
     console.log(playerId)
-    // this.props.deletePlayer(playerId)
-    // this.props.history.push('/players')
+    this.props.deletePlayer(playerId)
+    this.props.history.push('/')
   }
 
   render(){

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { updateTeamFormData } from '../../actions/teamForm';
-import { getTeams } from '../../actions/teams';
-import { editTeam } from '../../actions/teams'
+import { getTeams, editTeam } from '../../actions/teams';
 
 class TeamEditForm extends Component {
 
@@ -36,6 +35,7 @@ class TeamEditForm extends Component {
   }
 
   render() {
+  console.log(this.props.mah)
     return(
       <div className ="editTeamForm">
       <h1>Update your team</h1>
@@ -51,6 +51,7 @@ class TeamEditForm extends Component {
 
       <label htmlFor="teamWins">Team Wins: </label>
         <input
+
         type="number"
         name="wins"
         onChange={this.handleOnChange}
@@ -66,6 +67,7 @@ class TeamEditForm extends Component {
         <br></ br>
       <label htmlFor="teamLogo">Team Logo: </label>
         <input
+
         type="text"
         name="logo_url"
         onChange={this.handleOnChange}

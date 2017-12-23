@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import PlayerForm from '../players/PlayerForm';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { getTeams } from '../../actions/teams'
+import { getTeams, deleteTeam } from '../../actions/teams'
 import { fetchPlayers } from '../../actions/players'
-import { deleteTeam } from '../../actions/teams'
 
 class TeamShow extends Component {
 
@@ -14,17 +13,15 @@ class TeamShow extends Component {
   }
 
   handleOnDelete = () => {
-    console.log(this.props.history)
-    // console.log(this.props.history.push('/teams'))
+    const { history, deleteTeam } = this.props
     const teamId = this.props.match.params.id
-    this.props.deleteTeam(teamId)
+    deleteTeam(teamId, history)
     this.props.history.push('/')
   }
 
   render(){
     const teamShow = () => {
       const players = this.props.players
-          console.log(players)
       const teamId = parseInt(this.props.match.params.id)
         const sortedTeamPlayers = players.filter(player => player.team_id === teamId)
         if (sortedTeamPlayers.length === 0){

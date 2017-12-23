@@ -1,14 +1,15 @@
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
-
 import teams from './reducers/teams';
+import team from './reducers/teams';
 import players from './reducers/players';
 import teamFormData from './reducers/teamFormData';
-import playerFormData from './reducers/playerFormData';
+import playerFormData from './reducers/playerFormData'
 
 
 const reducers = combineReducers({
   teams,
+  team,
   teamFormData,
   players,
   playerFormData

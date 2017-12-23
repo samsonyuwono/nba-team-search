@@ -33,7 +33,6 @@ class PlayerShow extends Component {
           </div>
             )
           })
-
       }
     return(
       <div>

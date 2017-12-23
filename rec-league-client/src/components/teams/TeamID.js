@@ -9,7 +9,6 @@ class TeamID extends Component {
   }
 
   render() {
-    console.log(this.props.teams)
     const teamIds = () => {
       const teams = this.props.teams
       return teams.map(team =>{
@@ -22,8 +21,8 @@ class TeamID extends Component {
       }
     return(
       <div>
-      <h3>Team ID </h3>
-      <h5>{teamIds()}</h5>
+      <p>Team ID </p>
+      {teamIds()}
       </div>
     )
   }

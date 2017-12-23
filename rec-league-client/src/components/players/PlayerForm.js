@@ -75,7 +75,7 @@ class PlayerForm extends Component {
 
           <button type="submit">Add Player</button>
         </form>
-        <TeamID />
+      <TeamID />
       </div>
     )
   }

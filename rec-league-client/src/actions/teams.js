@@ -10,6 +10,13 @@ const setTeams = teams => {
   }
 }
 
+const setTeam = team => {
+  return {
+    type: 'GET_TEAM_SUCCESS',
+    team
+  }
+}
+
 const addTeam = team => {
   return {
     type: 'CREATE_TEAM_SUCCESS',
@@ -31,6 +38,12 @@ const destroyTeam = teamId => {
   }
 }
 
+const loading = teams => {
+  return {
+    type: 'LOADING_TEAMS'
+  }
+}
+
 export const getTeams = () => {
   return dispatch => {
     return fetch(`${API_URL}/teams`)
@@ -38,6 +51,15 @@ export const getTeams = () => {
       .then(teams => dispatch(setTeams(teams)))
       .catch(error => console.log(error));
   }
+}
+
+export const getTeam = teamId => {
+  return dispatch => {
+    return fetch(`${API_URL}/teams/${teamId}`)
+        .then(response => response.json())
+        .then(team => dispatch(setTeam(team)))
+        .catch(error => console.log(error));
+    }
 }
 
 export const createTeam = team => {
@@ -75,20 +97,18 @@ export const editTeam = (teamId, team) => {
   }
 }
 
-export const deleteTeam = (teamId, history) => {
+
+export const deleteTeam = (teamId, teams) => {
+  const request = {
+    method: 'DELETE'
+  }
   return dispatch => {
-    return fetch(`${API_URL}/teams/${teamId}`, {
-      method: "DELETE",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ teamId : teamId })
-    })
+    return fetch(`${API_URL}/teams/${teamId}`, request)
     .then(response => response.json())
     .then(team => {
-      dispatch(destroyTeam(teamId))
+      dispatch(destroyTeam(teamId));
+      dispatch(loading(teams));
     })
     .catch(error => console.log(error))
-   }
- }
+  }
+}

@@ -92,7 +92,7 @@ export const editTeam = (teamId, team) => {
 }
 
 
-export const deleteTeam = (teamId, teams) => {
+export const deleteTeam = (teamId) => {
   return dispatch => {
     return fetch(`${API_URL}/teams/${teamId}`, {
       method: "DELETE",

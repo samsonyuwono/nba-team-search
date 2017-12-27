@@ -7,12 +7,13 @@ const Home = (props) => {
     <div className='uk-position-medium uk-position-center uk-text-center'>
       <h1 >Welcome to the Rec League App</h1>
       <div className="padding-bottom">
-      <img src="https://shalomaustin.org/image/sports-and-fitness/competitve-Champs.jpg" />
+      <img src="https://shalomaustin.org/image/sports-and-fitness/competitve-Champs.jpg"/>
         <h3> An open source app for organizing your Rec League</h3>
       </div>
       <div className="padding-bottom">
        <Auth />
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/HxHTp_jfVIk" frameBorder="0" gesture="media" allow="encrypted-media" allowFullScreen></iframe>
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/HxHTp_jfVIk"
+       frameBorder="0" gesture="media" allow="encrypted-media" allowFullScreen></iframe>
      </div>
       <div className="padding-top">
         <p className="padding-top">Manage your teams and players all in one app</p>

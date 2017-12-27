@@ -8,7 +8,7 @@ export default (state = [], action) => {
 
     case 'UPDATE_PLAYER_SUCCESS':
       const player = state.filter(s => s.id === action.state.id)
-      return player.filter(p => p.id !== action.state.id).concat(state)
+      return player.filter(p => p.id !== action.state.id).concat(action.state)
 
     case 'DELETE_PLAYER':
       return state.filter(s => s.id !== action.id)

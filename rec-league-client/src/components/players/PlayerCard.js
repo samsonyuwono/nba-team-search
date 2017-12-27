@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PlayerLike from './PlayerLike'
 
 const PlayerCard = ({ team, player }) => (
   <div key={player.id} className="PlayerCard">
@@ -10,6 +11,7 @@ const PlayerCard = ({ team, player }) => (
     <div>
       <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}`}>Click here</Link> <br />
       <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}/edit`}>Edit Player</Link> <br />
+      <PlayerLike />
     </div>
   </div>
 )

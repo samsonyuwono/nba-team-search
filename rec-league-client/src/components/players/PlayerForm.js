@@ -17,8 +17,8 @@ class PlayerForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    this.props.createPlayer(this.props.playerFormData)
-    this.props.history.push('/players')
+    this.props.createPlayer(this.props.playerFormData, this.props.history)
+    
   }
 
   render() {
@@ -76,7 +76,7 @@ class PlayerForm extends Component {
 
           <button type="submit">Add Player</button>
         </form>
-
+        <TeamID />
       </div>
     )
   }

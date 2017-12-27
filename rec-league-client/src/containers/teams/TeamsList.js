@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import TeamCard from '../../components/teams/TeamCard';
 import TeamForm from '../../components/teams/TeamForm';
-import { getTeams } from '../../actions/teams'
+import { getTeams, deleteTeam } from '../../actions/teams'
 import '../../assets/Teams.css'
 
 
@@ -11,9 +11,10 @@ class TeamsList extends Component {
 
   componentDidMount() {
     this.props.getTeams()
-
   }
+
   render() {
+
     return (
     <div className= "TeamsContainer">
       <h1>Teams</h1>
@@ -35,4 +36,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, { getTeams })(TeamsList);
+export default connect(mapStateToProps, { getTeams, deleteTeam })(TeamsList);

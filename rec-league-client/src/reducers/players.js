@@ -7,10 +7,11 @@ export default (state = [], action) => {
       return state.concat(action.player);
 
     case 'UPDATE_PLAYER_SUCCESS':
-      return {player: state.filter(s => s.id !== action.state.id).concat(state)}
+      const player = state.filter(s => s.id === action.state.id)
+      return player.filter(p => p.id !== action.state.id).concat(state)
 
     case 'DELETE_PLAYER':
-      return {player: state.filter(s => s.id !== action.id)}
+      return state.filter(s => s.id !== action.id)
 
     default:
       return state

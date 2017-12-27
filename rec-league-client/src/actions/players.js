@@ -77,10 +77,7 @@ export const editPlayer = (playerId, player) => {
 export const deletePlayer = (playerId, history) => {
   return dispatch => {
     return fetch(`${API_URL}/players/${playerId}`, {
-      method: "DELETE",
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      method: "DELETE"
     })
     .then(response => response.json())
     .then(player => {

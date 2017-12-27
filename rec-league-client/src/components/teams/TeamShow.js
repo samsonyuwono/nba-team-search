@@ -12,10 +12,10 @@ class TeamShow extends Component {
     this.props.fetchPlayers()
   }
 
-  handleOnDelete = () => {
-    const { history, deleteTeam } = this.props
+  handleOnDelete = event => {
+    event.preventDefault()
     const teamId = this.props.match.params.id
-    deleteTeam(teamId, history)
+    this.props.deleteTeam(teamId)
     this.props.history.push('/')
   }
 
@@ -58,6 +58,9 @@ const mapStateToProps = (state) => {
   })
 }
 
+TeamShow.defaultProps = {
+  teams: []
+}
 export default withRouter(
   connect (mapStateToProps, { getTeams, fetchPlayers, deleteTeam })(TeamShow)
 )

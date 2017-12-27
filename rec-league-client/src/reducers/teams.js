@@ -7,10 +7,11 @@ export default (state = [], action) => {
       return state.concat(action.team);
 
     case 'UPDATE_TEAM_SUCCESS':
-      return {team: state.filter(s => s.id !== action.state.id).concat(state)}
+      const team = state.filter(s => s.id === action.state.id)
+      return  team.filter(t => t.id !== t.state.id).concat(state)
 
     case 'DELETE_TEAM':
-      return {team: state.filter(s => s.id !== action.id)}
+      return state.filter(s => s.id !== action.id)
 
     default:
       return state;

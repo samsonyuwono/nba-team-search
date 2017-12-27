@@ -38,12 +38,6 @@ const destroyTeam = teamId => {
   }
 }
 
-const loading = teams => {
-  return {
-    type: 'LOADING_TEAMS'
-  }
-}
-
 export const getTeams = () => {
   return dispatch => {
     return fetch(`${API_URL}/teams`)
@@ -99,16 +93,14 @@ export const editTeam = (teamId, team) => {
 
 
 export const deleteTeam = (teamId, teams) => {
-  const request = {
-    method: 'DELETE'
-  }
   return dispatch => {
-    return fetch(`${API_URL}/teams/${teamId}`, request)
-    .then(response => response.json())
-    .then(team => {
-      dispatch(destroyTeam(teamId));
-      dispatch(loading(teams));
+    return fetch(`${API_URL}/teams/${teamId}`, {
+      method: "DELETE",
     })
-    .catch(error => console.log(error))
+      .then(response => response.json())
+      .then(team => {
+        dispatch(destroyTeam(teamId))
+      })
+      .catch(error => console.log(error))
   }
 }

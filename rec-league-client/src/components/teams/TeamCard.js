@@ -9,7 +9,7 @@ const TeamCard = ({ team }) => (
     <img className="TeamImage" src={team.logo_url} alt={team.name} />
     <div>
       <Link style={{ marginBottom: '5px'}} to={`/teams/${team.id}`}>Roster</Link> <br />
-      <Link style={{ marginBottom: '5px'}} to={`/teams/${team.id}/edit`}>Edit Team</Link>
+      <Link style={{ marginBottom: '5px'}} to={`/teams/${team.id}/edit`}>Edit Team</Link> <br />
     </div>
   </div>
 )

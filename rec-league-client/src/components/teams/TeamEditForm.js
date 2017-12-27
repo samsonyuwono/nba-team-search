@@ -18,8 +18,6 @@ class TeamEditForm extends Component {
   }
 
   handleOnChange = event => {
-    console.log(this.props.teams)
-    console.log(this.props.teams.name)
     const { name, value } = event.target
     const currentTeamFormData = Object.assign({}, this.props.teamFormData, {
       [name]: value
@@ -31,11 +29,10 @@ class TeamEditForm extends Component {
     event.preventDefault();
     const teamId = this.props.match.params.id
     this.props.editTeam(teamId, this.props.teamFormData)
-    this.props.history.push('/teams')
+    this.props.history.push('/')
   }
 
   render() {
-  console.log(this.props.mah)
     return(
       <div className ="editTeamForm">
       <h1>Update your team</h1>

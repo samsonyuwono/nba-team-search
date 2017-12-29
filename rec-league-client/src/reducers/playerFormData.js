@@ -4,7 +4,7 @@ const initialState = {
   weight: 0,
   image_url:'',
   team_id: 0,
-  teams: []
+  team: []
 }
 
 export default (state= initialState, action) => {

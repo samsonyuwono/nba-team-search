@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PlayerForm from '../players/PlayerForm';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import { getTeams, deleteTeam } from '../../actions/teams'
 import { fetchPlayers } from '../../actions/players'
 
@@ -58,9 +57,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-TeamShow.defaultProps = {
-  teams: []
-}
-export default withRouter(
-  connect (mapStateToProps, { getTeams, fetchPlayers, deleteTeam })(TeamShow)
-)
+export default connect (mapStateToProps, { getTeams, fetchPlayers, deleteTeam })(TeamShow)

@@ -9,7 +9,6 @@ class PlayerLike extends Component {
   }
 
   handleOnLike = event => {
-    console.log(this.state)
     this.setState({
       count: this.state.count + 1
     })
@@ -17,11 +16,10 @@ class PlayerLike extends Component {
 
   callApi = () => {
     fetch(`http://localhost:3001/api/players`)
-    .then(function(response) {
-      return response.json()
+    .then(res => res.json())
     .then(players => console.log(players))
-  })
-}
+  }
+
 
   render(){
     return (

@@ -10,11 +10,7 @@ class PlayersList extends Component {
   componentDidMount() {
     this.props.fetchPlayers()
   }
-
-  handleOnLike = event => {
-    console.log("clikced!")
-  }
-
+  
   render() {
     return (
     <div className= "PlayersContainer">

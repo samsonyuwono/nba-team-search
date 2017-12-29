@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import Dropdown from 'react-dropdown'
 import { updatePlayerFormData } from '../../actions/playerForm';
 import { createPlayer } from '../../actions/players';
-import TeamID from '../teams/TeamID';
+
+import TeamDropDown from '../teams/TeamDropDown'
 
 class PlayerForm extends Component {
 
@@ -18,7 +19,6 @@ class PlayerForm extends Component {
   handleOnSubmit = event => {
     event.preventDefault()
     this.props.createPlayer(this.props.playerFormData, this.props.history)
-    
   }
 
   render() {
@@ -74,9 +74,12 @@ class PlayerForm extends Component {
             />
           </div>
 
+          <div>
+        
+
+          </div>
           <button type="submit">Add Player</button>
         </form>
-        <TeamID />
       </div>
     )
   }
@@ -84,7 +87,8 @@ class PlayerForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    playerFormData: state.playerFormData
+    playerFormData: state.playerFormData,
+    teams: state.teams
   }
 }
 

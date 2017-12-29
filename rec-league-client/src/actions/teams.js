@@ -38,6 +38,20 @@ const destroyTeam = teamId => {
   }
 }
 
+export const increaseWin= win => {
+  return {
+    type: 'INCREASE_WIN',
+    win
+  }
+}
+
+export const increaseLoss = loss =>{
+  return {
+    type: 'INCREASE_LOSS',
+    loss
+  }
+}
+
 export const getTeams = () => {
   return dispatch => {
     return fetch(`${API_URL}/teams`)
@@ -56,7 +70,7 @@ export const getTeam = teamId => {
     }
 }
 
-export const createTeam = team => {
+export const createTeam = (team, history) => {
   return dispatch => {
     return fetch(`${API_URL}/teams`, {
       method: "POST",
@@ -69,6 +83,7 @@ export const createTeam = team => {
       .then(team => {
         dispatch(addTeam(team))
         dispatch(resetTeamForm())
+        history.push('/teams')
       })
       .catch(error => console.log(error))
   }

@@ -4,11 +4,12 @@ import teams from './reducers/teams';
 import players from './reducers/players';
 import teamFormData from './reducers/teamFormData';
 import playerFormData from './reducers/playerFormData'
-
+import teamWinLoss from './reducers/teamWinLoss';
 
 const reducers = combineReducers({
   teams,
   teamFormData,
+  teamWinLoss,
   players,
   playerFormData
 });

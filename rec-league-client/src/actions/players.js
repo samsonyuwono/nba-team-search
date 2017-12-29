@@ -69,7 +69,7 @@ export const editPlayer = (playerId, player) => {
     })
       .then(response => response.json())
       .then(player => {
-        dispatch(setTimeout(updatePlayer(player), 5000))
+        dispatch(updatePlayer(player))
       })
       .catch(error => console.log(error))
   }

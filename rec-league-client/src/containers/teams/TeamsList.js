@@ -14,7 +14,6 @@ class TeamsList extends Component {
   }
 
   render() {
-
     return (
     <div className= "TeamsContainer">
       <h1>Teams</h1>

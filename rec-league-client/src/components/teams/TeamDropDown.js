@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getTeams } from '../../actions/teams'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import Dropdown from 'react-dropdown'
+import { DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class TeamDropDown extends Component {
   constructor(props) {
     super(props);
-
-    this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false
     };
+    this.toggle = this.toggle.bind(this);
   }
 
   componentDidMount(){
@@ -25,6 +25,7 @@ class TeamDropDown extends Component {
 
 
   render() {
+    console.log(this.props.teams)
     const teamDropDown = () => {
       const teams = this.props.teams
       return teams.map(team =>{
@@ -41,7 +42,7 @@ class TeamDropDown extends Component {
           Select your team here
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem>{teamDropDown()}</DropdownItem>
+          <Dropdown onChange={this._onSelect}  placeholder="Select an option" />
         </DropdownMenu>
       </Dropdown>
     );

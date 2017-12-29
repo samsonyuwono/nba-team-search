@@ -3,10 +3,34 @@ import { connect } from 'react-redux';
 import Dropdown from 'react-dropdown'
 import { updatePlayerFormData } from '../../actions/playerForm';
 import { createPlayer } from '../../actions/players';
-
-import TeamDropDown from '../teams/TeamDropDown'
+import { getTeams } from '../../actions/teams'
+// import TeamDropDown from '../teams/TeamDropDown'
 
 class PlayerForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdownOpen: false,
+    };
+
+  }
+
+
+  componentDidMount(){
+    this.props.getTeams()
+    .then(teams => this.setState({teams: teams}))
+  }
+
+  // toggle() {
+  //   this.setState({
+  //     dropdownOpen: !this.state.dropdownOpen
+  //   });
+  // }
+
+
+  handleTeamSelect = event => {
+    team: this.props.teams.find(team => team.name === event.target.value)
+  }
 
   handleOnChange = event => {
     const { name, value } = event.target;
@@ -18,11 +42,18 @@ class PlayerForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
+    const teams = {teams: this.state.team.id}
     this.props.createPlayer(this.props.playerFormData, this.props.history)
   }
 
   render() {
+    console.log(this.props.teams)
     const { name, height, weight, image_url, team_id } = this.props.playerFormData;
+    const teams = this.props.teams
+    const teamOptions = teams.map(team => {
+      return <option value={team.name} id={team.id} key={team.id}>{team.name}</option>
+    });
+
     return (
       <div className='playerForm'>
         <h1>Add a player to your team</h1>
@@ -65,18 +96,10 @@ class PlayerForm extends Component {
           </div>
 
           <div>
-            <label htmlFor="team_id">Team ID:</label>
-            <input
-              type="number"
-              onChange={this.handleOnChange}
-              name="team_id"
-              value={team_id}
-            />
-          </div>
-
-          <div>
-        
-
+          <label>Select Team</label>
+          <select value={this.state.teams} onChange={(event)=> this.handleTeamSelect(event)}>
+            {teamOptions}
+          </select>
           </div>
           <button type="submit">Add Player</button>
         </form>
@@ -92,7 +115,5 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {
-  updatePlayerFormData,
-  createPlayer
+export default connect(mapStateToProps, {updatePlayerFormData,createPlayer, getTeams
 })(PlayerForm);

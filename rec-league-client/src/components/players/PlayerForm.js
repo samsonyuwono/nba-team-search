@@ -11,7 +11,11 @@ class PlayerForm extends Component {
   }
 
   handleTeamSelect = (event) => {
-    const teamID = this.props.teams.map(team => team.id === event.target.value)
+    const { team, value } = event.target
+    const currentPlayerFormData = Object.assign({}, this.props.playerFormData, {
+      team: value
+    })
+    this.props.updatePlayerFormData(currentPlayerFormData)
   };
 
   handleOnChange = event => {
@@ -24,8 +28,7 @@ class PlayerForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    const teamsID = this.props.teams.map(team => team.id )
-    this.props.createPlayer(this.props.playerFormData, teamsID, this.props.history)
+    this.props.createPlayer(this.props.playerFormData, this.props.history)
   }
 
   render() {

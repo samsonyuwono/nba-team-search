@@ -12,9 +12,11 @@ class PlayerForm extends Component {
 
   handleTeamSelect = (event) => {
     const { team, value } = event.target
+    console.log(event.target)
     const currentPlayerFormData = Object.assign({}, this.props.playerFormData, {
       team: value
     })
+    console.log(currentPlayerFormData)
     this.props.updatePlayerFormData(currentPlayerFormData)
   };
 
@@ -24,6 +26,7 @@ class PlayerForm extends Component {
       [name]: value,
     })
     this.props.updatePlayerFormData(currentPlayerFormData)
+    console.log(currentPlayerFormData)
   }
 
   handleOnSubmit = event => {
@@ -83,8 +86,8 @@ class PlayerForm extends Component {
           <label htmlFor="team_select">Select Team</label>
           <select
             value={this.props.teams.id}
-            onChange={this.handleTeamSelect}>
-            name="team_select"
+            onChange={this.handleTeamSelect}
+            name="team_select">
             {teamOptions}
           </select>
           </div>

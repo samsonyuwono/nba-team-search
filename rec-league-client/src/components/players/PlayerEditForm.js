@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { updatePlayerFormData } from '../../actions/playerForm'
-import { fetchPlayers } from '../../actions/players'
-import { editPlayer } from '../../actions/players'
-
+import { fetchPlayers, editPlayer } from '../../actions/players'
 
 class PlayerEditForm extends Component {
 

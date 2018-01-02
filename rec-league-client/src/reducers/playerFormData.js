@@ -3,6 +3,7 @@ const initialState = {
   height: 0,
   weight: 0,
   image_url:'',
+  team: []
 }
 
 export default (state= initialState, action) => {

@@ -39,7 +39,7 @@ export const fetchPlayers = () => {
   }
 }
 
-export const createPlayer = (player, teamID, history) => {
+export const createPlayer = (player, history) => {
   return dispatch => {
     return fetch(`${API_URL}/players`, {
       method: "POST",

@@ -11,7 +11,7 @@ const TeamCard = ({ team }) => (
     <div>
       <Link style={{ marginBottom: '5px'}} to={`/teams/${team.id}`}>Roster</Link> <br />
       <Link style={{ marginBottom: '5px'}} to={`/teams/${team.id}/edit`}>Edit Team</Link> <br />
-      <TeamWinLoss />
+      <TeamWinLoss teamId={team.id}/>
     </div>
   </div>
 )

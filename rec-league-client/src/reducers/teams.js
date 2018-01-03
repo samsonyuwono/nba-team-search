@@ -2,9 +2,10 @@ export default (state = [], action) => {
   switch(action.type) {
     case 'GET_TEAMS_SUCCESS':
       return action.teams;
-
-    case 'GET_TEAM_SUCESS':
-      return action.team;
+    //
+    // case 'GET_TEAM_SUCESS':
+    // debugger;
+    //   return action.team;
 
     case 'CREATE_TEAM_SUCCESS':
       return state.concat(action.team);

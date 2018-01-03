@@ -1,22 +1,27 @@
 import React, {Component } from 'react';
 import { connect } from 'react-redux';
-import { increaseWin } from '../../actions/teams';
-
+import { getTeams, increaseWin } from '../../actions/teams';
 
 class TeamWinLoss extends Component {
+
+
   constructor(props) {
-    super()
+    super(props)
     this.state = {
+      teamId: this.props.teamId,
       wins: 0,
       losses: 0
     }
   }
+  componentDidMount(){
+    this.props.getTeams()
+  }
 
-  handleWin = event => {
-    console.log(this.props)
-    this.setState({
-      wins: this.state.wins + 1
-    })
+  handleWin = (event) => {
+    const { name, value } = event.target
+    console.log(event.target)
+    console.log(this.props.teams.wins)
+    // this.props.increaseWin(teamId)
   }
 
 
@@ -27,9 +32,15 @@ class TeamWinLoss extends Component {
   }
 
   render(){
+    const { team } = this.props.teams
+    const teams = this.props.teams
+    const teamWins = this.state.teamId //id of team
+    // const teamWins = teams.map(team => {
+    //   return <option value={team.name} id={team.id} key={team.id}>{team.wins}</option>
+    // });
     return (
       <div>
-      <button onClick={(ev)=> increaseWin()}>Wins</button>{this.state.wins}
+      <button onClick={(event)=> this.handleWin(event)}>Wins</button>{teamWins}
       <button onClick={(event) => this.handleLoss(event)}>Losses</button>{this.state.losses}
       </div>
     )
@@ -42,11 +53,6 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    win: () => dispatch({ type: 'INCREASE_WIN'})
-  }
-}
 
 
-export default connect(mapStateToProps)(TeamWinLoss);
+export default connect(mapStateToProps, {getTeams, increaseWin})(TeamWinLoss);

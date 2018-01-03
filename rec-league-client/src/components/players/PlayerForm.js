@@ -14,7 +14,7 @@ class PlayerForm extends Component {
     const { team, value } = event.target
     console.log(event.target)
     const currentPlayerFormData = Object.assign({}, this.props.playerFormData, {
-      team: value
+      team_id: value
     })
     console.log(currentPlayerFormData)
     this.props.updatePlayerFormData(currentPlayerFormData)
@@ -26,7 +26,6 @@ class PlayerForm extends Component {
       [name]: value,
     })
     this.props.updatePlayerFormData(currentPlayerFormData)
-    console.log(currentPlayerFormData)
   }
 
   handleOnSubmit = event => {
@@ -38,7 +37,7 @@ class PlayerForm extends Component {
     const { name, height, weight, image_url, team } = this.props.playerFormData;
     const teams = this.props.teams
     const teamOptions = teams.map(team => {
-      return <option value={team.name} id={team.id} key={team.id}>{team.name}</option>
+      return <option value={team.id} id={team.name} key={team.id}>{team.name}</option>
     });
 
     return (

@@ -38,17 +38,17 @@ const destroyTeam = teamId => {
   }
 }
 
-export const increaseWin= win => {
+export const incrementWin= teamId => {
   return {
     type: 'INCREASE_WIN',
-    win
+    teamId
   }
 }
 
-export const increaseLoss = loss =>{
+export const incrementLoss = teamId =>{
   return {
     type: 'INCREASE_LOSS',
-    loss
+    teamId
   }
 }
 
@@ -65,7 +65,7 @@ export const getTeam = teamId => {
   return dispatch => {
     return fetch(`${API_URL}/teams/${teamId}`)
         .then(response => response.json())
-        .then(team => dispatch(setTeam(team)))
+        .then(team => dispatch(setTeams(team)))
         .catch(error => console.log(error));
     }
 }
@@ -115,6 +115,23 @@ export const deleteTeam = (teamId) => {
       .then(response => response.json())
       .then(team => {
         dispatch(destroyTeam(teamId))
+      })
+      .catch(error => console.log(error))
+  }
+}
+
+export const increaseWin = (teamId, team) => {
+  return dispatch => {
+    return fetch(`${API_URL}/teams/${teamId}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ team: team })
+    })
+      .then(response => response.json())
+      .then(team => {
+        dispatch(incrementWin(team))
       })
       .catch(error => console.log(error))
   }

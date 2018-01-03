@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { updatePlayerFormData } from '../../actions/playerForm'
 import { fetchPlayers, editPlayer } from '../../actions/players'
+import { getTeams } from '../../actions/teams'
 
 class PlayerEditForm extends Component {
 
@@ -15,7 +16,18 @@ class PlayerEditForm extends Component {
     const currentPlayer = this.props.match.params.id
     const playerFormData = allPlayers.filter(allPlayer => allPlayer.id === currentPlayer)
     this.props.updatePlayerFormData(playerFormData)
+    this.props.getTeams()
   }
+
+  handleTeamSelect = (event) => {
+    const { team, value } = event.target
+    console.log(event.target)
+    const currentPlayerFormData = Object.assign({}, this.props.playerFormData, {
+      team_id: value
+    })
+    console.log(currentPlayerFormData)
+    this.props.updatePlayerFormData(currentPlayerFormData)
+  };
 
   handleOnChange = event => {
     const { name, value } = event.target
@@ -33,6 +45,10 @@ class PlayerEditForm extends Component {
   }
 
   render() {
+    const teams = this.props.teams
+    const teamOptions = teams.map(team => {
+      return <option value={team.id} id={team.name} key={team.id}>{team.name}</option>
+    });
     return(
       <div className ="editPlayerForm">
       <h1>Update your player</h1>
@@ -69,13 +85,15 @@ class PlayerEditForm extends Component {
         />
         <br></ br>
 
-      <label htmlFor="team_id">Team Number: </label>
-        <input
-        type="number"
-        name="team_id"
-        onChange={this.handleOnChange}
-        />
-        <br></ br>
+      <div>
+        <label htmlFor="team_select">Select Team</label>
+        <select
+          value={this.props.teams.id}
+          onChange={this.handleTeamSelect}
+          name="team_select">
+          {teamOptions}
+        </select>
+        </div>
         <input type="submit" value="Edit Player" />
       </form>
       </div>
@@ -86,9 +104,10 @@ class PlayerEditForm extends Component {
 const mapStateToProps = state => {
   return {
     players: state.players,
-    playerFormData: state.playerFormData
+    playerFormData: state.playerFormData,
+    teams: state.teams
   }
 }
 
 
-export default connect (mapStateToProps, {updatePlayerFormData, editPlayer, fetchPlayers })(PlayerEditForm);
+export default connect (mapStateToProps, {updatePlayerFormData, editPlayer, fetchPlayers, getTeams })(PlayerEditForm);

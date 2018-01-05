@@ -14,13 +14,21 @@ export default (state = [], action) => {
       return state.filter(s => s.id !== action.id)
 
       case 'INCREASE_WIN':
-  //get id of team here then plus one to team win use state
+    //get id of team here then plus one to team win use state
       const win = state.filter(s=> s.id === action.id)
         const teamWins = action.team.wins
         return {...
           state,
-          wins: teamWins + 1
         }
+
+    case 'INCREASE_LOSS':
+        const loss = state.filter(s=> s.id === action.id)
+          const teamLosses = action.team.losses
+          return {...
+            state,
+          }
+
+
     default:
       return state;
   }

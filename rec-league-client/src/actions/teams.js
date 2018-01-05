@@ -122,7 +122,7 @@ export const deleteTeam = (teamId) => {
 }
 
 export const increaseWin = (wins, teamId) => {
-//need to access teamWins here and assign + 1
+  //need to access teamWins here and assign + 1
   const addWin = Object.assign({}, teamId, {wins: wins + 1})
 
   return dispatch => {
@@ -142,6 +142,7 @@ export const increaseWin = (wins, teamId) => {
 }
 
 export const increaseLoss = (losses, teamId) => {
+  debugger;
   const addLoss = Object.assign({}, teamId, {losses: losses + 1})
 
   return dispatch => {
@@ -154,7 +155,7 @@ export const increaseLoss = (losses, teamId) => {
     })
       .then(response => response.json())
       .then(team => {
-        dispatch(incrementLoss(team))
+        dispatch(incrementLoss(losses, teamId))
       })
       .catch(error => console.log(error))
   }

@@ -14,7 +14,7 @@ class TeamWinLoss extends Component {
     }
   }
 
-  handleWin =  (event) => {
+  handleWin =  event => {
     const wins = this.props.wins
     const teamId = this.props.team
     this.props.increaseWin(wins, teamId)
@@ -22,9 +22,9 @@ class TeamWinLoss extends Component {
 
 
   handleLoss = event => {
-    this.setState({
-      losses: this.state.losses + 1
-    })
+    const losses = this.props.losses
+    const teamId = this.props.team
+    this.props.increaseWin(losses, teamId)
   }
 
   render(){

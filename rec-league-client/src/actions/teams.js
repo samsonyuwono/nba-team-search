@@ -141,14 +141,16 @@ export const increaseWin = (wins, teamId) => {
   }
 }
 
-export const increaseLoss = (teamId, team) => {
+export const increaseLoss = (losses, teamId) => {
+  const addLoss = Object.assign({}, teamId, {losses: losses + 1})
+
   return dispatch => {
     return fetch(`${API_URL}/teams/${teamId}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(teamId)
+      body: JSON.stringify(addLoss)
     })
       .then(response => response.json())
       .then(team => {

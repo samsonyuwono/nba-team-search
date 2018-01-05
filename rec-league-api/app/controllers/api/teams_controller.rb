@@ -42,7 +42,11 @@ class Api::TeamsController < ApplicationController
     end
 
     def team_params
-      params.require(:team).permit(:name, :wins, :losses, :logo_url)
+      params.require(:team).permit(:id, :name, :wins, :losses, :logo_url)
+    end
+
+    def edit_params
+      params.fetch(:team, {}).permit(:name, :wins, :losses, :logo_url)
     end
 
 end

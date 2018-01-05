@@ -10,12 +10,12 @@ const setTeams = teams => {
   }
 }
 
-const setTeam = team => {
-  return {
-    type: 'GET_TEAM_SUCCESS',
-    team
-  }
-}
+// const setTeam = team => {
+//   return {
+//     type: 'GET_TEAM_SUCCESS',
+//     team
+//   }
+// }
 
 const addTeam = team => {
   return {
@@ -90,6 +90,7 @@ export const createTeam = (team, history) => {
 }
 
 export const editTeam = (teamId, team) => {
+  debugger;
   return dispatch => {
     return fetch(`${API_URL}/teams/${teamId}`, {
       method: "PATCH",
@@ -120,18 +121,38 @@ export const deleteTeam = (teamId) => {
   }
 }
 
-export const increaseWin = (teamId, team) => {
+export const increaseWin = (wins, teamId) => {
+//need to access teamWins here and assign + 1
+  const addWin = Object.assign({}, teamId, {wins: wins + 1})
+
   return dispatch => {
     return fetch(`${API_URL}/teams/${teamId}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ team: team })
+      body: JSON.stringify(addWin)
     })
       .then(response => response.json())
       .then(team => {
-        dispatch(incrementWin(team))
+        dispatch(incrementWin(wins, teamId))
+      })
+      .catch(error => console.log(error))
+  }
+}
+
+export const increaseLoss = (teamId, team) => {
+  return dispatch => {
+    return fetch(`${API_URL}/teams/${teamId}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(teamId)
+    })
+      .then(response => response.json())
+      .then(team => {
+        dispatch(incrementLoss(team))
       })
       .catch(error => console.log(error))
   }

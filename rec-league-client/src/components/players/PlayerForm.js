@@ -20,7 +20,7 @@ class PlayerForm extends Component {
   }
 
   render() {
-    const { name, height, weight, image_url, team } = this.props.playerFormData;
+    const { name, height, weight, image_url } = this.props.playerFormData;
 
     return (
       <div className='playerForm'>

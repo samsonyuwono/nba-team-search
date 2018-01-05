@@ -9,12 +9,10 @@ class TeamDropDown extends Component {
   }
 
   handleTeamSelect = (event) => {
-    const { team, value } = event.target
-    console.log(event.target)
+    const { value } = event.target
     const currentPlayerFormData = Object.assign({}, this.props.playerFormData, {
       team_id: value
     })
-    console.log(currentPlayerFormData)
     this.props.updatePlayerFormData(currentPlayerFormData)
   };
 

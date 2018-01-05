@@ -1,27 +1,23 @@
 import React, {Component } from 'react';
 import { connect } from 'react-redux';
-import { getTeams, increaseWin } from '../../actions/teams';
+import { increaseWin, increaseLoss } from '../../actions/teams';
+import { bindActionCreators } from 'redux';
 
 class TeamWinLoss extends Component {
-
 
   constructor(props) {
     super(props)
     this.state = {
       teamId: this.props.teamId,
-      wins: 0,
-      losses: 0
+      wins: this.props.wins,
+      losses: this.props.losses
     }
   }
-  componentDidMount(){
-    this.props.getTeams()
-  }
 
-  handleWin = (event) => {
-    const { name, value } = event.target
-    console.log(event.target)
-    console.log(this.props.teams.wins)
-    // this.props.increaseWin(teamId)
+  handleWin =  (event) => {
+    const wins = this.props.wins
+    const teamId = this.props.team
+    this.props.increaseWin(wins, teamId)
   }
 
 
@@ -32,16 +28,12 @@ class TeamWinLoss extends Component {
   }
 
   render(){
-    const { team } = this.props.teams
-    const teams = this.props.teams
-    const teamWins = this.state.teamId //id of team
-    // const teamWins = teams.map(team => {
-    //   return <option value={team.name} id={team.id} key={team.id}>{team.wins}</option>
-    // });
+    const wins = this.state.wins
+    const losses = this.state.losses
     return (
       <div>
-      <button onClick={(event)=> this.handleWin(event)}>Wins</button>{teamWins}
-      <button onClick={(event) => this.handleLoss(event)}>Losses</button>{this.state.losses}
+      <button onClick={(event)=> this.handleWin(this.props.wins)}>Wins</button>{wins}
+      <button onClick={(event) => this.handleLoss(this.props.losses)}>Losses</button>{losses}
       </div>
     )
   }
@@ -49,10 +41,17 @@ class TeamWinLoss extends Component {
 
 const mapStateToProps = state => {
     return {
-      teams: state.teams
+      teams: state.teams,
     }
 }
 
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      increaseWin: increaseWin,
+      increaseLoss: increaseLoss
+    }, dispatch
+  )
+}
 
-
-export default connect(mapStateToProps, {getTeams, increaseWin})(TeamWinLoss);
+export default connect(mapStateToProps, mapDispatchToProps)(TeamWinLoss);

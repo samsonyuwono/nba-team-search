@@ -4,7 +4,7 @@ import TeamDropDown from '../teams/TeamDropDown'
 
 import { updatePlayerFormData } from '../../actions/playerForm'
 import { fetchPlayers, editPlayer } from '../../actions/players'
-import { getTeams } from '../../actions/teams'
+
 
 class PlayerEditForm extends Component {
 
@@ -73,6 +73,7 @@ class PlayerEditForm extends Component {
         <br></ br>
 
         <TeamDropDown />
+
         <input type="submit" value="Edit Player" />
       </form>
       </div>

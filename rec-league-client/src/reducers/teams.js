@@ -2,10 +2,6 @@ export default (state = [], action) => {
   switch(action.type) {
     case 'GET_TEAMS_SUCCESS':
       return action.teams;
-    //
-    // case 'GET_TEAM_SUCESS':
-    // debugger;
-    //   return action.team;
 
     case 'CREATE_TEAM_SUCCESS':
       return state.concat(action.team);
@@ -17,6 +13,14 @@ export default (state = [], action) => {
     case 'DELETE_TEAM':
       return state.filter(s => s.id !== action.id)
 
+      case 'INCREASE_WIN':
+  //get id of team here then plus one to team win use state
+      const win = state.filter(s=> s.id === action.id)
+        const teamWins = action.team.wins
+        return {...
+          state,
+          wins: teamWins + 1
+        }
     default:
       return state;
   }

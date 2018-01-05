@@ -122,7 +122,6 @@ export const deleteTeam = (teamId) => {
 }
 
 export const increaseWin = (wins, teamId) => {
-  //need to access teamWins here and assign + 1
   const addWin = Object.assign({}, teamId, {wins: wins + 1})
 
   return dispatch => {
@@ -142,7 +141,6 @@ export const increaseWin = (wins, teamId) => {
 }
 
 export const increaseLoss = (losses, teamId) => {
-  debugger;
   const addLoss = Object.assign({}, teamId, {losses: losses + 1})
 
   return dispatch => {

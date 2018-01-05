@@ -18,19 +18,14 @@ class TeamWinLoss extends Component {
     this.setState({
       wins: this.state.wins +1
     })
-    const wins = this.props.wins
-    const teamId = this.props.team
-    this.props.increaseWin(wins, teamId)
+    this.props.increaseWin(this.props.wins, this.props.team)
   }
-
 
   handleLoss = event => {
     this.setState({
       losses: this.state.losses + 1
     })
-    const losses = this.props.losses
-    const teamId = this.props.team
-    this.props.increaseLoss(losses, teamId)
+    this.props.increaseLoss(this.props.losses, this.props.team)
   }
 
   render(){

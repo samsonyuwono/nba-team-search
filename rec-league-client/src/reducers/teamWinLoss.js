@@ -1,20 +1,20 @@
-// const initialState = {
-//   wins: 0
-// }
-export default (state = { wins: 0 }, action) => {
+export default (state = [], action) => {
+
   switch(action.type) {
-
+    // 
     // case 'INCREASE_WIN':
-    // debugger;
-    //   return
-    //   state.wins + 1
+    //   return {
+    //     wins: state.wins + 1
+    //   }
+    //
+    // case 'INCREASE_LOSS':
+    // // debugger;
+    //   return {
+    //     losses: state.losses + 1
+    //   }
 
 
-      // case 'INCREASE_LOSS':
-      //   return state.loss + 1
-      //   // loss: state.loss + 1
-
-      default:
-        return state;
+    default:
+      return state;
   }
 }

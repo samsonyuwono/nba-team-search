@@ -10,13 +10,6 @@ const setTeams = teams => {
   }
 }
 
-// const setTeam = team => {
-//   return {
-//     type: 'GET_TEAM_SUCCESS',
-//     team
-//   }
-// }
-
 const addTeam = team => {
   return {
     type: 'CREATE_TEAM_SUCCESS',
@@ -38,16 +31,18 @@ const destroyTeam = teamId => {
   }
 }
 
-export const incrementWin= teamId => {
+export const incrementWin= (wins, teamId) => {
   return {
     type: 'INCREASE_WIN',
+    wins,
     teamId
   }
 }
 
-export const incrementLoss = teamId =>{
+export const incrementLoss = (losses, teamId) =>{
   return {
     type: 'INCREASE_LOSS',
+    losses,
     teamId
   }
 }
@@ -59,15 +54,6 @@ export const getTeams = () => {
       .then(teams => dispatch(setTeams(teams)))
       .catch(error => console.log(error));
   }
-}
-
-export const getTeam = teamId => {
-  return dispatch => {
-    return fetch(`${API_URL}/teams/${teamId}`)
-        .then(response => response.json())
-        .then(team => dispatch(setTeams(team)))
-        .catch(error => console.log(error));
-    }
 }
 
 export const createTeam = (team, history) => {
@@ -90,7 +76,6 @@ export const createTeam = (team, history) => {
 }
 
 export const editTeam = (teamId, team) => {
-  debugger;
   return dispatch => {
     return fetch(`${API_URL}/teams/${teamId}`, {
       method: "PATCH",

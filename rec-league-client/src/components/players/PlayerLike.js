@@ -20,7 +20,6 @@ class PlayerLike extends Component {
     .then(players => console.log(players))
   }
 
-
   render(){
     return (
       <div>

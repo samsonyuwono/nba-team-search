@@ -14,9 +14,9 @@ class TeamWinLoss extends Component {
     }
   }
 
-  handleWin =  (event) => {
+  handleWin = (event) => {
     this.setState({
-      wins: this.state.wins +1
+      wins: this.state.wins + 1
     })
     this.props.increaseWin(this.props.wins, this.props.team)
   }

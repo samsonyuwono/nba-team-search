@@ -14,18 +14,28 @@ class TeamWinLoss extends Component {
     }
   }
 
-  handleWin = (event) => {
-    this.setState({
-      wins: this.state.wins + 1
-    })
-    this.props.increaseWin(this.props.wins, this.props.team)
+  handleWin = event => {
+    if(this.state.wins + this.state.losses >= 82){
+      return this.state.wins
+    }
+    else{
+      this.setState({
+        wins: this.state.wins + 1
+        })
+      this.props.increaseWin(this.props.wins, this.props.team)
+    }
   }
 
   handleLoss = event => {
-    this.setState({
-      losses: this.state.losses + 1
-    })
+    if(this.state.wins + this.state.losses >= 82){
+      return this.state.losses
+    }
+    else{
+      this.setState({
+        losses: this.state.losses + 1
+        })
     this.props.increaseLoss(this.props.losses, this.props.team)
+    }
   }
 
   render(){

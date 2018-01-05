@@ -10,32 +10,31 @@ export default (state = [], action) => {
       const team = state.filter(s => s.id === action.state.id)
       return  team.filter(t => t.id !== t.state.id).concat(state)
 
-  case 'DELETE_TEAM':
-    return state.filter(s => s.id !== action.id)
+      case 'DELETE_TEAM':
+      return state.filter(s => s.id !== action.id)
 
-  case 'INCREASE_WIN':
-    const newWinState = state.map(team => {
-      if (team.id === action.teamId) {
-        return Object.assign({}, team, {wins: action.wins +1})
-      } else {
-        return team
-      }
-    })
+      case 'INCREASE_WIN':
+      const newWinState = state.map(team => {
+        if (team.id === action.teamId) {
+          return Object.assign({}, team, {wins: action.wins +1})
+        } else {
+          return team
+        }
+      } )
+      return newWinState
 
-    return newWinState
+      case 'INCREASE_LOSS':
+      const newLossState = state.map(team => {
+        if (team.id === action.teamId) {
+          // debugger
+          return Object.assign({}, team, {losses: action.losses +1})
+        } else {
+          return team
+        }
+      })
+      return newLossState
 
-   case 'INCREASE_LOSS':
-   const newLossState = state.map(team => {
-     if (team.id === action.teamId) {
-       // debugger
-       return Object.assign({}, team, {losses: action.losses +1})
-     } else {
-       return team
-     }
-   })
-   return newLossState
-
-   default:
-    return state
+      default:
+      return state
+    }
   }
-}

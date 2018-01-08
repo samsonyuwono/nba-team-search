@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TeamDropDown from '../teams/TeamDropDown'
 
 import { updatePlayerFormData } from '../../actions/playerForm'
-import { fetchPlayers } from '../../actions/players'
-import { editPlayer } from '../../actions/players'
+import { fetchPlayers, editPlayer } from '../../actions/players'
 
 
 class PlayerEditForm extends Component {
@@ -18,6 +18,7 @@ class PlayerEditForm extends Component {
     const playerFormData = allPlayers.filter(allPlayer => allPlayer.id === currentPlayer)
     this.props.updatePlayerFormData(playerFormData)
   }
+
 
   handleOnChange = event => {
     const { name, value } = event.target
@@ -71,13 +72,8 @@ class PlayerEditForm extends Component {
         />
         <br></ br>
 
-      <label htmlFor="team_id">Team Number: </label>
-        <input
-        type="number"
-        name="team_id"
-        onChange={this.handleOnChange}
-        />
-        <br></ br>
+        <TeamDropDown />
+
         <input type="submit" value="Edit Player" />
       </form>
       </div>
@@ -88,7 +84,7 @@ class PlayerEditForm extends Component {
 const mapStateToProps = state => {
   return {
     players: state.players,
-    playerFormData: state.playerFormData
+    playerFormData: state.playerFormData,
   }
 }
 

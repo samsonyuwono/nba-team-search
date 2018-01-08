@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import TeamCard from '../../components/teams/TeamCard';
 import TeamForm from '../../components/teams/TeamForm';
 import { getTeams, deleteTeam } from '../../actions/teams'
@@ -13,13 +12,14 @@ class TeamsList extends Component {
     this.props.getTeams()
   }
 
-  render() {
 
+  render() {
+    const sortedTeamWins = this.props.teams.sort(function(a, b){ return b.wins - a.wins})
     return (
     <div className= "TeamsContainer">
       <h1>Teams</h1>
       <div className="col-md-4">
-      {this.props.teams.map(team => <TeamCard key={team.id} team=
+      {sortedTeamWins.map(team => <TeamCard key={team.id} team=
         {team} />)}
       </div>
         <div className="col-md-8">

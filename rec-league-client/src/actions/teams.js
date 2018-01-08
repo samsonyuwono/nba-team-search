@@ -2,18 +2,10 @@ import { resetTeamForm } from './teamForm';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-// ** Action Creators **
 const setTeams = teams => {
   return {
     type: 'GET_TEAMS_SUCCESS',
     teams
-  }
-}
-
-const setTeam = team => {
-  return {
-    type: 'GET_TEAM_SUCCESS',
-    team
   }
 }
 
@@ -38,6 +30,22 @@ const destroyTeam = teamId => {
   }
 }
 
+export const incrementWin= (wins, teamId) => {
+  return {
+    type: 'INCREASE_WIN',
+    wins,
+    teamId
+  }
+}
+
+export const incrementLoss = (losses, teamId) =>{
+  return {
+    type: 'INCREASE_LOSS',
+    losses,
+    teamId
+  }
+}
+
 export const getTeams = () => {
   return dispatch => {
     return fetch(`${API_URL}/teams`)
@@ -47,16 +55,7 @@ export const getTeams = () => {
   }
 }
 
-export const getTeam = teamId => {
-  return dispatch => {
-    return fetch(`${API_URL}/teams/${teamId}`)
-        .then(response => response.json())
-        .then(team => dispatch(setTeam(team)))
-        .catch(error => console.log(error));
-    }
-}
-
-export const createTeam = team => {
+export const createTeam = (team, history) => {
   return dispatch => {
     return fetch(`${API_URL}/teams`, {
       method: "POST",
@@ -69,6 +68,7 @@ export const createTeam = team => {
       .then(team => {
         dispatch(addTeam(team))
         dispatch(resetTeamForm())
+        history.push('/teams')
       })
       .catch(error => console.log(error))
   }
@@ -91,8 +91,7 @@ export const editTeam = (teamId, team) => {
   }
 }
 
-
-export const deleteTeam = (teamId, teams) => {
+export const deleteTeam = (teamId) => {
   return dispatch => {
     return fetch(`${API_URL}/teams/${teamId}`, {
       method: "DELETE",
@@ -100,6 +99,44 @@ export const deleteTeam = (teamId, teams) => {
       .then(response => response.json())
       .then(team => {
         dispatch(destroyTeam(teamId))
+      })
+      .catch(error => console.log(error))
+  }
+}
+
+export const increaseWin = (wins, teamId) => {
+  const addWin = Object.assign({}, teamId, {wins: wins + 1})
+
+  return dispatch => {
+    return fetch(`${API_URL}/teams/${teamId}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(addWin)
+    })
+      .then(response => response.json())
+      .then(team => {
+        dispatch(incrementWin(wins, teamId))
+      })
+      .catch(error => console.log(error))
+  }
+}
+
+export const increaseLoss = (losses, teamId) => {
+  const addLoss = Object.assign({}, teamId, {losses: losses + 1})
+
+  return dispatch => {
+    return fetch(`${API_URL}/teams/${teamId}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(addLoss)
+    })
+      .then(response => response.json())
+      .then(team => {
+        dispatch(incrementLoss(losses, teamId))
       })
       .catch(error => console.log(error))
   }

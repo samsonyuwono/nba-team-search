@@ -1,4 +1,3 @@
-// ** Action Creators **
 export const updatePlayerFormData = playerFormData => {
   return {
     type: 'UPDATED_PLAYER_FORM',

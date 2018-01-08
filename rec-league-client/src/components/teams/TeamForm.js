@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { updateTeamFormData } from '../../actions/teamForm';
 import { createTeam } from '../../actions/teams';
 

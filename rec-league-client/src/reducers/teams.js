@@ -7,8 +7,14 @@ export default (state = [], action) => {
       return state.concat(action.team);
 
     case 'UPDATE_TEAM_SUCCESS':
-      const team = state.filter(s => s.id === action.state.id)
-      return  team.filter(t => t.id !== t.state.id).concat(state)
+      const newTeamState = state.map(team => {
+       if (team.id === action.teamId) {
+         return Object.assign({}, team, {team: team})
+        } else {
+          return team
+        }
+      })
+      return newTeamState
 
       case 'DELETE_TEAM':
       return state.filter(s => s.id !== action.id)
@@ -20,7 +26,7 @@ export default (state = [], action) => {
           } else {
             return team
           }
-        } )
+        })
       return newWinState
 
       case 'INCREASE_LOSS':

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 115c535d82cfc88ee611419f431232a1d88b1396
 import React, {Component } from 'react';
 import { connect } from 'react-redux';
 import { increaseWin, increaseLoss } from '../../actions/teams';

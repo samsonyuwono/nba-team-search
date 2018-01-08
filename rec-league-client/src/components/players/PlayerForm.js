@@ -78,4 +78,8 @@ const mapStateToProps = state => {
   }
 }
 
+<<<<<<< HEAD
 export default connect(mapStateToProps, {updatePlayerFormData, createPlayer})(PlayerForm);4
+=======
+export default connect(mapStateToProps, {updatePlayerFormData, createPlayer})(PlayerForm);
+>>>>>>> 115c535d82cfc88ee611419f431232a1d88b1396

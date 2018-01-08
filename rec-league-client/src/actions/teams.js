@@ -91,6 +91,10 @@ export const editTeam = (teamId, team) => {
   }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 115c535d82cfc88ee611419f431232a1d88b1396
 export const deleteTeam = (teamId) => {
   return dispatch => {
     return fetch(`${API_URL}/teams/${teamId}`, {

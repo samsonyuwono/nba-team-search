@@ -5,12 +5,11 @@ import players from './reducers/players';
 import teamFormData from './reducers/teamFormData';
 import playerFormData from './reducers/playerFormData'
 
-
 const reducers = combineReducers({
   teams,
   teamFormData,
   players,
-  playerFormData
+  playerFormData,
 });
 const middleware = [thunk];
 

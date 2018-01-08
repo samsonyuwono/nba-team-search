@@ -9,14 +9,7 @@ const TeamCard = ({ team }) => (
     <div>
       <Link style={{ marginBottom: '5px'}} to={`/teams/${team.id}`}>Roster</Link> <br />
       <Link style={{ marginBottom: '5px'}} to={`/teams/${team.id}/edit`}>Edit Team</Link> <br />
-<<<<<<< HEAD
-
-
       <TeamWinLoss team={team.id} wins={team.wins} losses={team.losses}/>
-=======
-      <TeamWinLoss team={team.id} wins={team.wins} losses={team.losses}/>
-
->>>>>>> 115c535d82cfc88ee611419f431232a1d88b1396
     </div>
   </div>
 )

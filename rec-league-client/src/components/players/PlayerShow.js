@@ -29,8 +29,6 @@ class PlayerShow extends Component {
             Height: {player.height} cm
             <br></ br>
             Height: {player.weight} lb
-            <br></ br>
-            {player.team_id}
           </div>
             )
           })

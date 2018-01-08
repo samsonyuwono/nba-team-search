@@ -39,7 +39,7 @@ export const fetchPlayers = () => {
   }
 }
 
-export const createPlayer = player => {
+export const createPlayer = (player, teamID, history) => {
   return dispatch => {
     return fetch(`${API_URL}/players`, {
       method: "POST",
@@ -52,6 +52,7 @@ export const createPlayer = player => {
       .then(player => {
         dispatch(addPlayer(player))
         dispatch(resetPlayerForm())
+        history.push('/players')
       })
       .catch(error => console.log(error))
   }
@@ -74,7 +75,7 @@ export const editPlayer = (playerId, player) => {
   }
 }
 
-export const deletePlayer = (playerId, history) => {
+export const deletePlayer = (playerId) => {
   return dispatch => {
     return fetch(`${API_URL}/players/${playerId}`, {
       method: "DELETE"

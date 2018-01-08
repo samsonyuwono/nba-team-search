@@ -10,6 +10,7 @@ class PlayersList extends Component {
   componentDidMount() {
     this.props.fetchPlayers()
   }
+  
   render() {
     return (
     <div className= "PlayersContainer">

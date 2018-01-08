@@ -11,7 +11,6 @@ class PlayerShow extends Component {
 
   handleOnDelete = () => {
     const playerId = this.props.match.params.id
-    console.log(playerId)
     this.props.deletePlayer(playerId)
     this.props.history.push('/')
   }
@@ -30,6 +29,8 @@ class PlayerShow extends Component {
             Height: {player.height} cm
             <br></ br>
             Height: {player.weight} lb
+            <br></ br>
+            {player.team_id}
           </div>
             )
           })

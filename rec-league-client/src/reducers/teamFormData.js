@@ -1,7 +1,7 @@
 const initialState = {
   name: '',
   wins: 0,
-  losses: 0, 
+  losses: 0,
   logo_url: ''
 }
 

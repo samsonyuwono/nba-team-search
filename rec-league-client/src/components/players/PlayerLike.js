@@ -14,17 +14,10 @@ class PlayerLike extends Component {
     })
   }
 
-  callApi = () => {
-    fetch(`http://localhost:3001/api/players`)
-    .then(res => res.json())
-    .then(players => console.log(players))
-  }
-
   render(){
     return (
       <div>
       <button onClick={this.handleOnLike}>Like</button>{this.state.count}
-      <button onClick={this.callApi}>Call Api</button>{this.state.players}
       </div>
     )
   }

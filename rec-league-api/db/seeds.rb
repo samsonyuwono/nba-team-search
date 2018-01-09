@@ -16,4 +16,4 @@ Player.create(name: "Kyle Kuzma", height: 200, weight: 200, image_url: "http://a
 
 Player.create(name: "Stephen Curry", height: 200, weight: 200, image_url: "http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3975.png&w=350&h=254", team_id: 1)
 Player.create(name: "Kevin Durant", height: 200, weight: 200, image_url: "http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3202.png&w=350&h=254", team_id: 1)
-Player.create(name: "Klay Thompson", height: 200, weight: 200, image_url: "http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/6475.png&w=350&h=254", team_id: 
+Player.create(name: "Klay Thompson", height: 200, weight: 200, image_url: "http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/6475.png&w=350&h=254", team_id: 1)

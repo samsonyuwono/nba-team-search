@@ -5,7 +5,7 @@ class CreatePlayers < ActiveRecord::Migration[5.1]
       t.integer :height
       t.integer :weight
       t.string :image_url
-
+      t.integer :team_id, default: 1
       t.timestamps
     end
   end

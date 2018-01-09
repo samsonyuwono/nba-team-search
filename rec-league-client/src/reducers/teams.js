@@ -17,7 +17,8 @@ export default (state = [], action) => {
       return newTeamState
 
       case 'DELETE_TEAM':
-      return state.filter(s => s.id !== action.id)
+        state.splice(action.playerId, 1)
+        return state
 
       case 'INCREASE_WIN':
         const newWinState = state.map(team => {

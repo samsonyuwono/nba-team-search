@@ -7,7 +7,6 @@ export default (state = [], action) => {
       return state.concat(action.player);
 
     case 'UPDATE_PLAYER_SUCCESS':
-    debugger;
       const newPlayerState = state.map(player => {
         if (player.id === action.playerId) {
           return Object.assign({}, player, {player: player})
@@ -18,7 +17,8 @@ export default (state = [], action) => {
       return newPlayerState
 
     case 'DELETE_PLAYER':
-      return state.filter(s => s.id !== action.id)
+      state.splice(action.playerId, 1)
+      return state
 
     default:
       return state

@@ -9,9 +9,9 @@ const PlayerCard = ({ team, player }) => (
     <p>Weight(lb): {player.weight} </p>
     <img className="PlayerImage" src={player.image_url} alt={player.name} />
     <div>
-      <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}`}>Click here</Link> <br />
+      <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}`}>View Player</Link> <br />
       <Link style={{ marginBottom: '5px'}} to={`/players/${player.id}/edit`}>Edit Player</Link> <br />
-      <PlayerLike />
+      <PlayerLike player={player.id} likes={player.likes}/>
     </div>
   </div>
 )

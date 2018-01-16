@@ -8,13 +8,14 @@ class TeamWinLoss extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      teamId: this.props.teamId,
+      teamId: this.props.team,
       wins: this.props.wins,
       losses: this.props.losses
     }
   }
 
   handleWin = event => {
+    debugger;
     if(this.state.wins + this.state.losses >= 82){
       return this.state.wins
     }

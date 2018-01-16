@@ -20,6 +20,16 @@ export default (state = [], action) => {
       state.splice(action.playerId, 1)
       return state
 
+    case 'INCREASE_LIKE':
+    const newLikeState = state.map(player => {
+      if (player.id === action.playerId) {
+        return Object.assign({}, player, {likes: action.likes +1})
+      } else {
+        return player
+      }
+    })
+      return newLikeState
+
     default:
       return state
     }

@@ -30,6 +30,14 @@ const destroyPlayer = playerId => {
   }
 }
 
+const incrementLike = (likes, playerId) => {
+  return {
+    type: 'INCREASE_LIKE',
+    likes,
+    playerId
+  }
+}
+
 export const fetchPlayers = () => {
   return dispatch => {
     return fetch(`${API_URL}/players`)
@@ -85,5 +93,23 @@ export const deletePlayer = (playerId) => {
       dispatch(destroyPlayer(playerId))
     })
     .catch(error => console.log(error))
+  }
+}
+
+export const increaseLike = (likes, playerId)=> {
+  const addLike = Object.assign({}, playerId, {likes: likes + 1})
+  return dispatch => {
+    return fetch(`${API_URL}/players/${playerId}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(addLike)
+    })
+      .then(response => response.json())
+      .then(team => {
+        dispatch(incrementLike(likes, playerId))
+      })
+      .catch(error => console.log(error))
   }
 }

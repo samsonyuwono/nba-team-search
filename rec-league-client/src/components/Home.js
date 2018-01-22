@@ -12,8 +12,7 @@ const Home = (props) => {
       </div>
       <div className="padding-bottom">
        <Auth />
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/HxHTp_jfVIk"
-       frameBorder="0" gesture="media" allow="encrypted-media" allowFullScreen></iframe>
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/xEew8pSCZCw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
      </div>
       <div className="padding-top">
         <p className="padding-top">Manage your teams and players all in one app</p>

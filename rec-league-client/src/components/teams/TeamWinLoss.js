@@ -15,7 +15,6 @@ class TeamWinLoss extends Component {
   }
 
   handleWin = event => {
-    debugger;
     if(this.state.wins + this.state.losses >= 82){
       return this.state.wins
     }

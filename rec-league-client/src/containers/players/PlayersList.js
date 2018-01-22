@@ -12,10 +12,11 @@ class PlayersList extends Component {
   }
 
   render() {
+    const sortedPlayerHeight = this.props.players.sort((a,b) => {return b.height - a.height})
     return (
     <div className= "PlayersContainer">
       <h1>Players</h1>
-      {this.props.players.map(player => <PlayerCard key={player.id} player=
+      {sortedPlayerHeight.map(player => <PlayerCard key={player.id} player=
         {player} />)}
         <PlayerForm />
         <br>

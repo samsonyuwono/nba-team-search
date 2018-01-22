@@ -14,7 +14,7 @@ class TeamsList extends Component {
 
 
   render() {
-    const sortedTeamWins = this.props.teams.sort(function(a, b){ return b.wins - a.wins})
+    const sortedTeamWins = this.props.teams.sort((a,b) => { return b.wins - a.wins})
     return (
     <div className= "TeamsContainer">
       <h1>Teams</h1>

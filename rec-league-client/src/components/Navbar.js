@@ -56,6 +56,14 @@ const Navbar = () =>
     activeStyle={{
       background: '#D1D0CE'
     }}>Add a player</NavLink>
+
+    <NavLink
+    to='/teams/standings'
+    exact
+    style={link}
+    activeStyle={{
+      background: '#D1D0CE'
+    }}>Standings</NavLink>
   </div>
 
 

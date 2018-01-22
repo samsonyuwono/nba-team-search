@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { increaseLike } from '../../actions/players'
 import { bindActionCreators } from 'redux';

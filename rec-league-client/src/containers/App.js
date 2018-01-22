@@ -6,6 +6,7 @@ import TeamsList from './teams/TeamsList';
 import TeamShow from '../components/teams/TeamShow';
 import TeamForm from '../components/teams/TeamForm'
 import TeamEditForm from '../components/teams/TeamEditForm';
+import TeamStandings from '../components/teams/TeamStandings';
 import PlayersList from './players/PlayersList';
 import PlayerForm from '../components/players/PlayerForm'
 import PlayerShow from '../components/players/PlayerShow';
@@ -22,6 +23,7 @@ class App extends Component {
 					<Navbar />
             <Switch>
               <Route exact path='/' component={Home}/>
+              <Route exact path='/teams/standings' component={TeamStandings}/>
               <Route exact path='/teams/new' component={TeamForm}/>
               <Route exact path='/teams/:id' component={TeamShow}/>
 							<Route exact path='/teams' component={TeamsList}/>

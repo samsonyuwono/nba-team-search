@@ -13,47 +13,16 @@ class TeamStandings extends Component{
 
   render(){
       const sortedTeamWins = this.props.teams.sort((a,b) => { return b.wins - a.wins})
-
-      // const teamStandings = sortedTeamWins.map(team => {
-      //   return <tr key={team.id}>{team.name} {team.wins} - {team.losses} {(team.wins/(team.wins + team.losses)).toFixed(3)}</tr>
-      // });
     return(
-        <div className="table">
-             <BootstrapTable data={this.props.teams} bordered={true} height='120px' className='tr-style' height='500px'>
+      <BootstrapTable data={this.props.teams} bordered={true} className='tr-style'>
+        <TableHeaderColumn dataField='id' isKey hidden> ID </TableHeaderColumn>
 
-              <TableHeaderColumn dataField='id'
-              isKey hidden>
-                ID
-              </TableHeaderColumn>
+        <TableHeaderColumn dataField='name'> Name </TableHeaderColumn>
 
-              <TableHeaderColumn
-                  dataField='name'
-                  dataAlign='right'
-                  headerAlign="right"
-                  width="150"
-                  >
-                  Name
-                </TableHeaderColumn>
+        <TableHeaderColumn dataField='wins'> Wins </TableHeaderColumn>
 
-               <TableHeaderColumn dataField='wins'
-                dataAlign='right'
-                headerAlign="right"
-                width="150"
-                >
-                 Wins
-               </TableHeaderColumn>
-
-               <TableHeaderColumn dataField='losses'
-                  dataAlign='right'
-                  headerAlign="right"
-                  width="150"
-                  >
-                 Losses
-               </TableHeaderColumn>
-
-             </BootstrapTable>
-            </div>
-
+        <TableHeaderColumn dataField='losses'> Losses </TableHeaderColumn>
+      </BootstrapTable>
     )
   }
 }

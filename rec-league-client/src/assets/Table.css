@@ -8,7 +8,21 @@
 
 }
 
+th{
+  border-bottom: 1pt solid black;
+}
+
 td{
   height: 50px;
   vertical-align: bottom;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding: 15px;
+  width: 20%
+}
+
+th{
+  text-align: right;
+  padding: 15px;
+  width: 10%
 }

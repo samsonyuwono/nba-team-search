@@ -1,0 +1,14 @@
+.tr-style {
+  padding: 32px;
+  float: left;
+
+  height: 400px;
+  width: 50%;
+  margin: auto;
+
+}
+
+td{
+  height: 50px;
+  vertical-align: bottom;
+}

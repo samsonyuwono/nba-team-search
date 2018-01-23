@@ -1,7 +1,7 @@
 {
-  "name": "nba-team-search-client",
+  "name": "rec-league-app-client",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "axios": "^0.17.1",
     "browser-history": "^1.0.1",

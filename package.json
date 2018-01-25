@@ -4,8 +4,8 @@
     "node": "6.3.1"
   },
   "scripts": {
-    "build": "cd rec-league-client && yarn install && yarn build && cd ..",
+    "build": "cd rec-league-client && npm install && npm build && cd ..",
     "deploy": "cp -a client/build/. public/",
-    "postinstall": "yarn build && yarn deploy && echo 'Client built!'"
+    "postinstall": "npm build && npm deploy && echo 'Client built!'"
   }
 }

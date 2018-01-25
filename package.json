@@ -1,7 +1,8 @@
 {
   "name": "rec-league-app",
   "engines": {
-    "node": "6.3.1"
+    "node": "6.3.1",
+    "npm": "6.3.1"
   },
   "scripts": {
     "build": "cd rec-league-client && npm install && npm build && cd ..",

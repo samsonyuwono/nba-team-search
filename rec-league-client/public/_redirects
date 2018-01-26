@@ -1,2 +1,2 @@
-/api/* https://rec-league-api.herokuapp.com/:splat 200
+http://localhost:3001/api/* https://rec-league-api.herokuapp.com/:splat 200
 /* /index.html 200
